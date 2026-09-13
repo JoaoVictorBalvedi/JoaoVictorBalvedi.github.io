@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>João Victor — Portfolio</title>
-  <meta name="description" content="Portfolio pessoal: projetos, experiências e coisas que eu gosto.">
+  <title>João Victor Balvedi — Full Stack Developer</title>
+  <meta name="description" content="João Victor Balvedi — full stack developer. Projects, experience and personal things.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e5412d'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,16 @@
   <header class="topbar">
     <a href="#top" class="brand" id="brand"></a>
     <nav class="nav">
-      <a href="#sobre"><span>01</span>Sobre</a>
-      <a href="#experiencia"><span>02</span>Experiência</a>
-      <a href="#projetos"><span>03</span>Projetos</a>
-      <a href="#pessoal"><span>04</span>Pessoal</a>
-      <a href="#contato"><span>05</span>Contato</a>
+      <a href="#about"><span>01</span><b data-i18n="about"></b></a>
+      <a href="#experience"><span>02</span><b data-i18n="experience"></b></a>
+      <a href="#projects"><span>03</span><b data-i18n="projects"></b></a>
+      <a href="#personal"><span>04</span><b data-i18n="personal"></b></a>
+      <a href="#contact"><span>05</span><b data-i18n="contact"></b></a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+    <button class="lang-toggle mono" id="langToggle" data-i18n-aria="langAria">
+      <span data-lang="en">EN</span>/<span data-lang="pt">PT</span>
+    </button>
+    <button class="theme-toggle" id="themeToggle" data-i18n-aria="themeAria">
       <span class="theme-dot"></span>
     </button>
   </header>
@@ -46,53 +49,56 @@
           <span id="clock"></span>
         </div>
       </div>
-      <a href="#sobre" class="scroll-cue mono" aria-label="Rolar para o conteúdo">↓ rolar</a>
+      <a href="#about" class="scroll-cue mono" data-i18n="scroll" data-i18n-aria="scrollAria"></a>
     </section>
 
-    <!-- 01 SOBRE -->
-    <section class="section" id="sobre">
-      <div class="section-label"><span class="mono">01</span><h2>Sobre</h2></div>
+    <!-- 01 ABOUT -->
+    <section class="section" id="about">
+      <div class="section-label"><span class="mono">01</span><h2 data-i18n="about"></h2></div>
       <div class="section-body about">
         <div class="about-text" id="aboutText"></div>
         <aside class="about-side">
-          <h3 class="mono small-title">Ferramentas</h3>
+          <h3 class="mono small-title" data-i18n="toolkit"></h3>
           <ul class="chips" id="skills"></ul>
-          <h3 class="mono small-title">Agora</h3>
+          <h3 class="mono small-title" data-i18n="now"></h3>
           <ul class="now" id="now"></ul>
+          <h3 class="mono small-title" style="margin-top:32px" data-i18n="languages"></h3>
+          <ul class="now languages" id="languages"></ul>
         </aside>
       </div>
     </section>
 
-    <!-- 02 EXPERIÊNCIA -->
-    <section class="section" id="experiencia">
-      <div class="section-label"><span class="mono">02</span><h2>Experiência</h2></div>
+    <!-- 02 EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section-label"><span class="mono">02</span><h2 data-i18n="experience"></h2></div>
       <div class="section-body">
-        <ol class="timeline" id="experience"></ol>
+        <ol class="timeline" id="jobs"></ol>
+        <div class="extra" id="extra"></div>
       </div>
     </section>
 
-    <!-- 03 PROJETOS -->
-    <section class="section" id="projetos">
-      <div class="section-label"><span class="mono">03</span><h2>Projetos</h2></div>
+    <!-- 03 PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-label"><span class="mono">03</span><h2 data-i18n="projects"></h2></div>
       <div class="section-body">
-        <div class="filters mono" id="filters" role="tablist" aria-label="Filtrar projetos"></div>
-        <ul class="projects" id="projects"></ul>
+        <div class="filters mono" id="filters" role="tablist" data-i18n-aria="filterAria"></div>
+        <ul class="projects" id="projectList"></ul>
       </div>
       <div class="preview" id="preview" aria-hidden="true"><img alt=""></div>
     </section>
 
-    <!-- 04 PESSOAL -->
-    <section class="section" id="pessoal">
-      <div class="section-label"><span class="mono">04</span><h2>Pessoal</h2></div>
+    <!-- 04 PERSONAL -->
+    <section class="section" id="personal">
+      <div class="section-label"><span class="mono">04</span><h2 data-i18n="personal"></h2></div>
       <div class="section-body">
         <p class="section-intro" id="personalIntro"></p>
-        <div class="personal-grid" id="personal"></div>
+        <div class="personal-grid" id="personalGrid"></div>
       </div>
     </section>
 
-    <!-- 05 CONTATO -->
-    <section class="section contact" id="contato">
-      <div class="section-label"><span class="mono">05</span><h2>Contato</h2></div>
+    <!-- 05 CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="section-label"><span class="mono">05</span><h2 data-i18n="contact"></h2></div>
       <div class="section-body">
         <p class="contact-lede" id="contactLede"></p>
         <a class="contact-mail" id="contactMail"></a>
@@ -103,8 +109,8 @@
 
   <footer class="footer mono">
     <span id="footerName"></span>
-    <span>Feito à mão · HTML, CSS & JS</span>
-    <a href="#top">↑ topo</a>
+    <span data-i18n="footer"></span>
+    <a href="#top" data-i18n="top"></a>
   </footer>
 
   <script src="data.js"></script>

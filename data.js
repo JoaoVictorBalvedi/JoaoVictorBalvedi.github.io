@@ -1,54 +1,134 @@
 /* ==========================================================================
    CONTEÚDO DO SITE
    Edite apenas este arquivo para atualizar o portfolio.
-   Tudo marcado com [PREENCHER] é placeholder.
+
+   Textos bilíngues usam { en: "...", pt: "..." } — inglês é o idioma padrão.
+   Um texto simples ("...") aparece igual nos dois idiomas.
+   Use *asteriscos* para destacar um trecho em itálico.
+   Datas: "AAAA-MM" (ex.: "2025-12") ou só "AAAA". "end" vazio = atual.
+   Tudo marcado com [FILL IN] / [PREENCHER] é placeholder.
    ========================================================================== */
 
 window.PORTFOLIO = {
-  name: "João Victor",
+  name: "João Victor Balvedi",
   shortName: "JV",
-  role: "Desenvolvedor",                       // [PREENCHER]
-  // Título do topo. Use *asteriscos* para destacar em itálico.
-  headline: "Construo *coisas* para a web — e às vezes fora dela.",
-  lede: "Estudante e desenvolvedor interessado em software bem feito, interfaces cuidadosas e ideias que misturam código com arte.", // [PREENCHER]
-  location: "Brasil",                          // [PREENCHER] ex.: "Curitiba, PR"
+  role: { en: "Full Stack Developer", pt: "Desenvolvedor Full Stack" },
+  headline: {
+    en: "I build *digital products* — from the interface to the AI behind it.",
+    pt: "Construo *produtos digitais* — da interface à IA por trás dela.",
+  },
+  lede: {
+    en: "Full stack developer and Computer Science student. Currently building SaaS products at Tog Lab with React, Next.js, NestJS and AI-assisted workflows.",
+    pt: "Desenvolvedor full stack e estudante de Ciência da Computação. Hoje construo produtos SaaS na Tog Lab com React, Next.js, NestJS e workflows assistidos por IA.",
+  },
+  location: { en: "Curitiba, Brazil", pt: "Curitiba, Brasil" },
   timezone: "America/Sao_Paulo",
-  status: "Aberto a oportunidades",
+  status: { en: "Open to conversations", pt: "Aberto a conversas" },
 
-  about: [
-    "Olá! Eu sou o João. [PREENCHER] Conte em poucas frases quem você é, o que estuda ou faz hoje e o que te move.",
-    "[PREENCHER] Um segundo parágrafo sobre como você começou a programar, o tipo de problema que gosta de resolver ou o que está aprendendo agora.",
+  about: {
+    en: [
+      "Hi, I'm João — a full stack developer and Computer Science student at PUCPR. I like taking products from a blank screen all the way to production: interfaces, APIs, databases and, more and more, the *AI* that ties them together.",
+      "Today I work at Tog Lab building SaaS applications with React, Next.js, NestJS and PostgreSQL. Before that, I co-founded a legal-tech startup that drafted legal filings with AI. I care about clean code, automation and finding better ways to work — lately, that means AI-assisted development workflows.",
+    ],
+    pt: [
+      "Oi, eu sou o João — desenvolvedor full stack e estudante de Ciência da Computação na PUCPR. Gosto de levar produtos da tela em branco até a produção: interfaces, APIs, bancos de dados e, cada vez mais, a *IA* que conecta tudo isso.",
+      "Hoje trabalho na Tog Lab construindo aplicações SaaS com React, Next.js, NestJS e PostgreSQL. Antes disso, co-fundei uma startup jurídica que gerava peças processuais com IA. Me importo com código limpo, automação e formas melhores de trabalhar — ultimamente, workflows de desenvolvimento assistido por IA.",
+    ],
+  },
+
+  skills: [
+    "TypeScript", "JavaScript", "Python", "React", "Next.js", "Node.js", "NestJS",
+    "PostgreSQL", "Prisma", "Redis", "Docker", "CI/CD", "RAG", "Claude Code",
   ],
 
-  skills: ["JavaScript", "TypeScript", "Python", "React", "Node.js", "Git", "SQL"], // [PREENCHER]
-
-  now: [                                       // o que você está fazendo "agora"
-    "Estudando [PREENCHER]",
-    "Construindo [PREENCHER]",
-    "Lendo [PREENCHER]",
+  now: [
+    { en: "Building an event orchestration platform at Tog Lab", pt: "Construindo uma plataforma de orquestração de eventos na Tog Lab" },
+    { en: "Exploring AI-assisted development workflows", pt: "Explorando workflows de desenvolvimento assistido por IA" },
+    { en: "Studying Computer Science at PUCPR", pt: "Cursando Ciência da Computação na PUCPR" },
   ],
 
-  /* ---------- EXPERIÊNCIA ----------
-     Mais recente primeiro. "end" vazio = atual. */
+  languages: [
+    { name: { en: "Portuguese", pt: "Português" }, level: { en: "Native", pt: "Nativo" } },
+    { name: { en: "English", pt: "Inglês" }, level: { en: "Advanced", pt: "Avançado" } },
+  ],
+
+  /* ---------- EXPERIÊNCIA PROFISSIONAL (mais recente primeiro) ---------- */
   experience: [
     {
-      start: "2025",
+      start: "2025-12",
       end: "",
-      role: "Cargo [PREENCHER]",
-      org: "Empresa / Instituição",
-      url: "",
-      description: "Descreva em uma ou duas frases o que você fez e o impacto.",
-      tags: ["React", "Node.js"],
+      role: { en: "Full Stack Developer", pt: "Desenvolvedor Full Stack" },
+      org: "Tog Lab",
+      url: "https://toglab.co",
+      place: { en: "Brazil · Portugal · USA · Türkiye", pt: "Brasil · Portugal · EUA · Türkiye" },
+      summary: {
+        en: "Building SaaS products end to end with a distributed team.",
+        pt: "Construindo produtos SaaS de ponta a ponta com um time distribuído.",
+      },
+      highlights: {
+        en: [
+          "Develop and evolve a web application across the stack — React, Next.js and TypeScript on the front end; NestJS, Prisma and PostgreSQL on the back end.",
+          "Plan and build an internal platform for managing and orchestrating events, owning features from database to UI.",
+          "Research and roll out *AI-assisted development workflows* that help the team ship faster with better code.",
+        ],
+        pt: [
+          "Desenvolvo e evoluo uma aplicação web em toda a stack — React, Next.js e TypeScript no front; NestJS, Prisma e PostgreSQL no back.",
+          "Planejo e construo uma plataforma interna de gestão e orquestração de eventos, cuidando das funcionalidades do banco à interface.",
+          "Pesquiso e implemento *workflows de desenvolvimento assistido por IA* para o time entregar mais rápido e com código melhor.",
+        ],
+      },
+      tags: ["TypeScript", "Next.js", "NestJS", "Prisma", "PostgreSQL"],
     },
     {
-      start: "2023",
-      end: "2025",
-      role: "Curso / Graduação [PREENCHER]",
-      org: "Universidade",
+      start: "2024-01",
+      end: "2025-12",
+      role: { en: "Co-founder & Full Stack Developer", pt: "Co-fundador & Desenvolvedor Full Stack" },
+      org: { en: "Legal AI Startup", pt: "Startup de IA Jurídica" },
       url: "",
-      description: "Formação, pesquisa, monitoria, projetos de extensão…",
-      tags: ["Formação"],
+      summary: {
+        en: "Co-founded a startup that uses AI to automatically draft legal filings.",
+        pt: "Co-fundei uma startup que usa IA para gerar peças processuais automaticamente.",
+      },
+      highlights: {
+        en: [
+          "Built the back end with NestJS, Prisma and relational databases, and the front end with React, Next.js and Tailwind.",
+          "Integrated AI assistants (OpenAI API) to analyze and generate legal content.",
+          "Winning project of PIBEP/PUCPR out of 15+ teams, later accelerated by Canastra Ventures and Sebrae.",
+        ],
+        pt: [
+          "Construí o back-end com NestJS, Prisma e bancos relacionais, e o front-end com React, Next.js e Tailwind.",
+          "Integrei assistants de IA (OpenAI API) para análise e geração de conteúdo jurídico.",
+          "Projeto vencedor do PIBEP/PUCPR entre mais de 15 equipes, depois acelerado pela Canastra Ventures e pelo Sebrae.",
+        ],
+      },
+      tags: ["NestJS", "React", "Next.js", "OpenAI API", "Tailwind"],
     },
+    {
+      start: "2023-10",
+      end: "2024-12",
+      role: { en: "Back-end Intern", pt: "Estagiário Back-end" },
+      org: "RP Info Sistemas",
+      url: "",
+      summary: {
+        en: "My first steps in the industry: back-end training, applied systems logic and following real projects while learning good programming practices.",
+        pt: "Meus primeiros passos no mercado: capacitação em back-end, lógica aplicada a sistemas e acompanhamento de projetos reais aprendendo boas práticas de programação.",
+      },
+      tags: ["Back-end"],
+    },
+  ],
+
+  education: [
+    {
+      title: { en: "B.Sc. in Computer Science", pt: "Bacharelado em Ciência da Computação" },
+      org: { en: "Pontifical Catholic University of Paraná (PUCPR)", pt: "Pontifícia Universidade Católica do Paraná (PUCPR)" },
+      start: "2023",
+      end: "",
+    },
+  ],
+
+  awards: [
+    { title: { en: "Winner — Techstars Startup Weekend AI", pt: "Vencedor — Techstars Startup Weekend AI" }, org: "Curitiba", year: "2025" },
+    { title: { en: "Winner — PIBEP", pt: "Vencedor — PIBEP" }, org: "PUCPR", year: "2024" },
   ],
 
   /* ---------- PROJETOS ----------
@@ -56,29 +136,26 @@ window.PORTFOLIO = {
      featured: true = aparece com destaque */
   projects: [
     {
-      title: "Projeto Um",
+      title: { en: "Project One", pt: "Projeto Um" },
       year: "2026",
-      description: "Resumo curto do projeto: o problema, a solução e o que tem de interessante.",
+      description: {
+        en: "[FILL IN] Short summary: the problem, the solution and what makes it interesting.",
+        pt: "[PREENCHER] Resumo curto: o problema, a solução e o que tem de interessante.",
+      },
       tags: ["Web", "React"],
       link: "",
-      repo: "https://github.com/",
+      repo: "https://github.com/JoaoVictorBalvedi",
       image: "",
       featured: true,
     },
     {
-      title: "Projeto Dois",
+      title: { en: "Project Two", pt: "Projeto Dois" },
       year: "2025",
-      description: "Uma ferramenta, um jogo, um script, um estudo — o que for.",
-      tags: ["Python", "Dados"],
-      link: "",
-      repo: "https://github.com/",
-      image: "",
-    },
-    {
-      title: "Projeto Três",
-      year: "2024",
-      description: "Algo experimental ou criativo também vale muito aqui.",
-      tags: ["Criativo"],
+      description: {
+        en: "[FILL IN] A tool, a game, a script, a study — anything goes.",
+        pt: "[PREENCHER] Uma ferramenta, um jogo, um script, um estudo — o que for.",
+      },
+      tags: ["Python", "AI"],
       link: "",
       repo: "",
       image: "",
@@ -86,21 +163,26 @@ window.PORTFOLIO = {
   ],
 
   /* ---------- PESSOAL ----------
-     Blocos livres sobre você. type: "list" | "text" | "quote" */
-  personalIntro: "Fora do código — coisas que eu gosto, faço e coleciono.",
+     Blocos livres. type: "list" | "text" | "quote" */
+  personalIntro: {
+    en: "Away from the keyboard — things I like, do and collect.",
+    pt: "Longe do teclado — coisas que eu gosto, faço e coleciono.",
+  },
   personal: [
-    { title: "Hobbies", type: "list", items: ["[PREENCHER]", "[PREENCHER]", "[PREENCHER]"] },
-    { title: "Lendo", type: "list", items: ["Livro — Autor", "Livro — Autor"] },
-    { title: "Ouvindo", type: "list", items: ["Artista / Álbum", "Artista / Álbum"] },
-    { title: "Uma frase", type: "quote", text: "Uma citação que você gosta.", author: "Autor" },
-    { title: "Curiosidade", type: "text", text: "Algo curioso sobre você que as pessoas não esperam." },
+    { title: "Hobbies", type: "list", items: { en: ["[FILL IN]", "[FILL IN]"], pt: ["[PREENCHER]", "[PREENCHER]"] } },
+    { title: { en: "Reading", pt: "Lendo" }, type: "list", items: { en: ["Book — Author"], pt: ["Livro — Autor"] } },
+    { title: { en: "Listening to", pt: "Ouvindo" }, type: "list", items: { en: ["Artist / Album"], pt: ["Artista / Álbum"] } },
+    { title: { en: "A quote", pt: "Uma frase" }, type: "quote", text: { en: "A quote you like.", pt: "Uma citação que você gosta." }, author: { en: "Author", pt: "Autor" } },
   ],
 
   /* ---------- CONTATO ---------- */
-  contactLede: "Quer conversar sobre um projeto, uma vaga ou só trocar uma ideia?",
+  contactLede: {
+    en: "Want to talk about a project, a role or just exchange ideas?",
+    pt: "Quer conversar sobre um projeto, uma vaga ou só trocar uma ideia?",
+  },
   email: "joaovictor2005balvedi@gmail.com",
   socials: [
-    { label: "GitHub", url: "https://github.com/JoaoVictorBalvediTog" },
+    { label: "GitHub", url: "https://github.com/JoaoVictorBalvedi" },
     { label: "LinkedIn", url: "https://linkedin.com/in/" }, // [PREENCHER]
   ],
 };

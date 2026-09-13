@@ -14,8 +14,12 @@ Site pessoal estático (HTML + CSS + JS puro, sem build), pronto para GitHub Pag
 
 ## Como editar
 
-Abra `data.js` e substitua os `[PREENCHER]`. Para adicionar um projeto ou experiência,
+Abra `data.js` e substitua os `[FILL IN]` / `[PREENCHER]`. Para adicionar um projeto ou experiência,
 copie um objeto da lista. No `headline` e nas descrições, `*texto*` vira itálico destacado.
+
+O site é bilíngue: inglês por padrão, com botão `EN/PT` no topo (a escolha fica salva, e
+`?lang=pt` na URL abre direto em português). Textos traduzidos usam `{ en: "...", pt: "..." }`;
+um texto simples aparece igual nos dois idiomas. Os textos fixos da interface ficam em `UI`, no `main.js`.
 
 ## Rodar localmente
 
