@@ -139,8 +139,8 @@ window.PORTFOLIO = {
       title: "Made in Heaven",
       year: "2026",
       description: {
-        en: "A native desktop app that *listens to a song and shows the chords* — live, on a guitar neck, with nothing sent to a server. Paste a YouTube link or open a file: a Rust (Tauri) shell supervises a local Python worker running ML chord recognition, and results are cached by the audio's content hash. It also maps every scale across the fretboard and helps build chord progressions, suggesting what comes next.",
-        pt: "App desktop nativo que *escuta uma música e mostra os acordes* — ao vivo, num braço de guitarra, sem enviar nada para servidor. Cole um link do YouTube ou abra um arquivo: um shell em Rust (Tauri) supervisiona um worker Python local com reconhecimento de acordes por ML, e o resultado fica em cache pelo hash do conteúdo do áudio. Também mostra todas as escalas pelo braço e ajuda a montar progressões, sugerindo o próximo acorde.",
+        en: "A desktop app that *listens to a song and shows the chords* live on a guitar neck — fully local, nothing sent to a server. A Rust (Tauri) shell runs a Python ML worker for chord recognition; the app also maps scales across the fretboard and suggests chord progressions.",
+        pt: "App desktop que *escuta uma música e mostra os acordes* ao vivo num braço de guitarra — tudo local, nada enviado para servidor. Um shell em Rust (Tauri) roda um worker Python com ML para reconhecer acordes; o app também mostra escalas pelo braço e sugere progressões.",
       },
       tags: ["Rust", "Tauri", "Svelte", "Python", "AI"],
       link: "https://joaovictorbalvedi.github.io/made-in-heaven/",
