@@ -136,16 +136,16 @@ window.PORTFOLIO = {
      featured: true = aparece com destaque */
   projects: [
     {
-      title: { en: "Project One", pt: "Projeto Um" },
+      title: "Made in Heaven",
       year: "2026",
       description: {
-        en: "[FILL IN] Short summary: the problem, the solution and what makes it interesting.",
-        pt: "[PREENCHER] Resumo curto: o problema, a solução e o que tem de interessante.",
+        en: "A native desktop app that *listens to a song and shows the chords* — live, on a guitar neck, with nothing sent to a server. Paste a YouTube link or open a file: a Rust (Tauri) shell supervises a local Python worker running ML chord recognition, and results are cached by the audio's content hash. It also maps every scale across the fretboard and helps build chord progressions, suggesting what comes next.",
+        pt: "App desktop nativo que *escuta uma música e mostra os acordes* — ao vivo, num braço de guitarra, sem enviar nada para servidor. Cole um link do YouTube ou abra um arquivo: um shell em Rust (Tauri) supervisiona um worker Python local com reconhecimento de acordes por ML, e o resultado fica em cache pelo hash do conteúdo do áudio. Também mostra todas as escalas pelo braço e ajuda a montar progressões, sugerindo o próximo acorde.",
       },
-      tags: ["Web", "React"],
-      link: "",
-      repo: "https://github.com/JoaoVictorBalvedi",
-      image: "",
+      tags: ["Rust", "Tauri", "Svelte", "Python", "AI"],
+      link: "https://joaovictorbalvedi.github.io/made-in-heaven/",
+      repo: "https://github.com/JoaoVictorBalvedi/made-in-heaven",
+      image: "assets/img/made-in-heaven.png",
       featured: true,
     },
     {
