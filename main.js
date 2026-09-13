@@ -104,10 +104,13 @@
     $("#filters").innerHTML = allTags.map((tag, i) =>
       `<button role="tab" aria-selected="${i === 0}" data-tag="${esc(tag)}" data-all="${i === 0}">${esc(tag)}</button>`).join("");
 
-    $("#projectList").innerHTML = D.projects.map((p) => `
-      <li class="project reveal${p.featured ? " featured" : ""}" data-tags="${esc((p.tags || []).map(t).join("|"))}" data-image="${esc(p.image || "")}">
+    $("#projectList").innerHTML = D.projects.map((p) => {
+      const href = p.link || p.repo;
+      const title = `<span class="project-title">${esc(t(p.title))}</span>`;
+      return `
+      <li class="project reveal${p.featured ? " featured" : ""}" data-tags="${esc((p.tags || []).map(t).join("|"))}" data-image="${esc(p.image || "")}" data-image-style="${esc(p.imageStyle || "")}">
         <div class="project-link">
-          <h3>${esc(t(p.title))}</h3>
+          <h3>${href ? `<a class="project-main" href="${esc(href)}" target="_blank" rel="noopener">${title}</a>` : title}</h3>
           <span class="year mono">${esc(p.year)}</span>
           <p class="desc">${emph(p.description)}</p>
           <div class="project-foot">
@@ -118,7 +121,8 @@
             </span>
           </div>
         </div>
-      </li>`).join("");
+      </li>`;
+    }).join("");
     bindPreviews();
 
     // Pessoal
@@ -163,6 +167,7 @@
       el.addEventListener("mouseenter", () => {
         if (!el.dataset.image) return;
         previewImg.src = el.dataset.image;
+        preview.classList.toggle("icon", el.dataset.imageStyle === "icon");
         preview.classList.add("show");
       });
       el.addEventListener("mouseleave", () => preview.classList.remove("show"));

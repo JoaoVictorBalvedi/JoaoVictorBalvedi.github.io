@@ -133,6 +133,8 @@ window.PORTFOLIO = {
 
   /* ---------- PROJETOS ----------
      image: caminho em assets/img (opcional, aparece ao passar o mouse)
+     imageStyle: "icon" = mostra a imagem pequena, girando, sem moldura (bom para ícones/logos)
+     clicar no projeto abre "link" (ou "repo", se não houver link)
      featured: true = aparece com destaque */
   projects: [
     {
@@ -145,7 +147,8 @@ window.PORTFOLIO = {
       tags: ["Rust", "Tauri", "Svelte", "Python", "AI"],
       link: "https://joaovictorbalvedi.github.io/made-in-heaven/",
       repo: "https://github.com/JoaoVictorBalvedi/made-in-heaven",
-      image: "assets/img/made-in-heaven.png",
+      image: "assets/img/made-in-heaven-icon.png",
+      imageStyle: "icon",
       featured: true,
     },
     {
