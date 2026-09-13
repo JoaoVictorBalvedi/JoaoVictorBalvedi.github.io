@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>João Victor — Portfolio</title>
+  <meta name="description" content="Portfolio pessoal: projetos, experiências e coisas que eu gosto.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e5412d'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // aplica o tema antes de renderizar para evitar "flash"
+    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a href="#top" class="brand" id="brand"></a>
+    <nav class="nav">
+      <a href="#sobre"><span>01</span>Sobre</a>
+      <a href="#experiencia"><span>02</span>Experiência</a>
+      <a href="#projetos"><span>03</span>Projetos</a>
+      <a href="#pessoal"><span>04</span>Pessoal</a>
+      <a href="#contato"><span>05</span>Contato</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+      <span class="theme-dot"></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="field" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <p class="mono eyebrow" id="heroEyebrow"></p>
+        <h1 class="hero-title" id="heroTitle"></h1>
+        <p class="hero-lede" id="heroLede"></p>
+        <div class="hero-meta mono">
+          <span id="heroLocation"></span>
+          <span class="status"><i></i><span id="heroStatus"></span></span>
+          <span id="clock"></span>
+        </div>
+      </div>
+      <a href="#sobre" class="scroll-cue mono" aria-label="Rolar para o conteúdo">↓ rolar</a>
+    </section>
+
+    <!-- 01 SOBRE -->
+    <section class="section" id="sobre">
+      <div class="section-label"><span class="mono">01</span><h2>Sobre</h2></div>
+      <div class="section-body about">
+        <div class="about-text" id="aboutText"></div>
+        <aside class="about-side">
+          <h3 class="mono small-title">Ferramentas</h3>
+          <ul class="chips" id="skills"></ul>
+          <h3 class="mono small-title">Agora</h3>
+          <ul class="now" id="now"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 02 EXPERIÊNCIA -->
+    <section class="section" id="experiencia">
+      <div class="section-label"><span class="mono">02</span><h2>Experiência</h2></div>
+      <div class="section-body">
+        <ol class="timeline" id="experience"></ol>
+      </div>
+    </section>
+
+    <!-- 03 PROJETOS -->
+    <section class="section" id="projetos">
+      <div class="section-label"><span class="mono">03</span><h2>Projetos</h2></div>
+      <div class="section-body">
+        <div class="filters mono" id="filters" role="tablist" aria-label="Filtrar projetos"></div>
+        <ul class="projects" id="projects"></ul>
+      </div>
+      <div class="preview" id="preview" aria-hidden="true"><img alt=""></div>
+    </section>
+
+    <!-- 04 PESSOAL -->
+    <section class="section" id="pessoal">
+      <div class="section-label"><span class="mono">04</span><h2>Pessoal</h2></div>
+      <div class="section-body">
+        <p class="section-intro" id="personalIntro"></p>
+        <div class="personal-grid" id="personal"></div>
+      </div>
+    </section>
+
+    <!-- 05 CONTATO -->
+    <section class="section contact" id="contato">
+      <div class="section-label"><span class="mono">05</span><h2>Contato</h2></div>
+      <div class="section-body">
+        <p class="contact-lede" id="contactLede"></p>
+        <a class="contact-mail" id="contactMail"></a>
+        <ul class="socials mono" id="socials"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span id="footerName"></span>
+    <span>Feito à mão · HTML, CSS & JS</span>
+    <a href="#top">↑ topo</a>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
