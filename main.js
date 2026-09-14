@@ -14,7 +14,7 @@
       scroll: "↓ scroll", footer: "Handmade · HTML, CSS & JS", top: "↑ top",
       langAria: "Mudar para português", themeAria: "Toggle light/dark theme",
       scrollAria: "Scroll to content", filterAria: "Filter projects",
-      prev: "Previous image", next: "Next image",
+      prev: "Previous image", next: "Next image", creations: "Creations",
     },
     pt: {
       about: "Sobre", experience: "Experiência", projects: "Projetos", personal: "Pessoal", contact: "Contato",
@@ -23,7 +23,7 @@
       scroll: "↓ rolar", footer: "Feito à mão · HTML, CSS & JS", top: "↑ topo",
       langAria: "Switch to English", themeAria: "Alternar tema claro/escuro",
       scrollAria: "Rolar para o conteúdo", filterAria: "Filtrar projetos",
-      prev: "Imagem anterior", next: "Próxima imagem",
+      prev: "Imagem anterior", next: "Próxima imagem", creations: "Criações",
     },
   };
   const MONTHS = {
@@ -55,10 +55,11 @@
     ? `<figure><video src="${esc(m.src)}"${m.poster ? ` poster="${esc(m.poster)}"` : ""} controls playsinline preload="metadata" aria-label="${esc(t(m.alt))}"></video></figure>`
     // imagens pequenas não são ampliadas (evita ficar borrado)
     : `<figure><img src="${esc(m.src)}" alt="${esc(t(m.alt))}" loading="lazy" onload="if(this.naturalHeight&&this.naturalHeight<this.clientHeight)this.style.height=this.naturalHeight+'px'"></figure>`;
-  const detailsBlock = (id, text, media) => `
+  const detailsBlock = (id, text, media, extra = "") => `
     <div class="project-details" id="${id}">
       <div class="project-details-inner">
         ${text ? paragraphs(text) : ""}
+        ${extra}
         ${media && media.length ? `
         <div class="gallery-wrap">
           <button type="button" class="gallery-nav gallery-prev" aria-label="${UI[lang].prev}" disabled></button>
@@ -190,6 +191,27 @@
       else if (c.type === "quote") body = `<blockquote>${esc(t(c.text))}</blockquote>${c.author ? `<cite>${esc(t(c.author))}</cite>` : ""}`;
       else body = `<p>${emph(c.text)}</p>`;
       return `<article class="card reveal"><h3 class="mono">${esc(t(c.title))}</h3>${body}</article>`;
+    }).join("");
+
+    // Criações: cards com capa; clicar expande com detalhes
+    $("#creationsIntro").textContent = t(D.creationsIntro);
+    $("#creationList").innerHTML = (D.creations || []).map((c, i) => {
+      const id = `creation-details-${i}`;
+      const status = c.status ? `<span class="badge mono${c.soon ? " badge-soon" : ""}">${esc(t(c.status))}</span>` : "";
+      const links = (c.links || []).map((l) => extLink(l.url, `${esc(t(l.label))} ↗`)).join("");
+      const note = c.note ? `<span class="project-note">${esc(t(c.note))}</span>` : "";
+      const extra = `${c.tags ? tagList(c.tags) : ""}${links || note ? `<p class="creation-links">${links}${note}</p>` : ""}`;
+      const position = c.coverPosition ? ` style="object-position:${esc(c.coverPosition)}"` : "";
+      return `
+      <li class="creation reveal expandable${c.soon ? " soon" : ""}">
+        <button type="button" class="creation-main expand-btn" aria-expanded="false" aria-controls="${id}">
+          <span class="creation-cover"><img src="${esc(c.cover)}" alt="${esc(t(c.coverAlt))}" loading="lazy"${position}></span>
+          <span class="creation-meta mono"><span>${esc(t(c.kind))}</span>${c.year ? `<span>${esc(c.year)}</span>` : ""}${status}</span>
+          <span class="creation-title"><span class="project-title">${esc(t(c.title))}</span><span class="project-toggle" aria-hidden="true"></span></span>
+          <span class="creation-summary">${emph(c.summary)}</span>
+        </button>
+        ${detailsBlock(id, c.description, c.media, extra)}
+      </li>`;
     }).join("");
 
     // Contato

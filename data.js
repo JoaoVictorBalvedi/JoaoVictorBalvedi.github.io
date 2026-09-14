@@ -251,6 +251,99 @@ window.PORTFOLIO = {
     },
   ],
 
+  /* ---------- CRIAÇÕES ----------
+     Cards com capa + texto curto; clicar expande com os detalhes.
+     cover: imagem da capa (coverPosition opcional, ex.: "center 70%")
+     status: selo (ex.: Em andamento); soon: true deixa o selo vazado ("em breve")
+     description, media, tags, links [{ label, url }] e note aparecem ao expandir */
+  creationsIntro: {
+    en: "A collection of things I make: code, instruments, AI models, art and whatever comes next.",
+    pt: "Uma coleção das coisas que eu crio: código, instrumentos, modelos de IA, arte e o que vier depois.",
+  },
+  creations: [
+    {
+      title: "Claude Review Action",
+      kind: { en: "Dev tool", pt: "Ferramenta dev" },
+      cover: "assets/img/creations/claude-review.svg",
+      coverAlt: { en: "Illustration of a pull request diff with an AI review comment", pt: "Ilustração de um diff de pull request com um comentário de revisão por IA" },
+      summary: {
+        en: "An automatic pull request reviewer powered by Claude.",
+        pt: "Um revisor automático de pull requests usando o Claude.",
+      },
+      description: {
+        en: "A GitHub Action that uses Claude to review pull requests automatically, so the team gets feedback on every change faster.",
+        pt: "Uma GitHub Action que usa o Claude para revisar pull requests automaticamente, para o time receber feedback sobre cada mudança mais rápido.",
+      },
+      tags: ["GitHub Actions", "Claude", { en: "AI", pt: "IA" }],
+      note: { en: "Private repository · Tog Lab", pt: "Repositório privado · Tog Lab" },
+    },
+    {
+      title: { en: "Commodity price forecasting", pt: "Previsão de preços de commodities" },
+      kind: { en: "AI model", pt: "Modelo de IA" },
+      status: { en: "In progress", pt: "Em andamento" },
+      cover: "assets/img/creations/commodities.svg",
+      coverAlt: { en: "Illustration of a price chart with a forecast band", pt: "Ilustração de um gráfico de preços com uma faixa de previsão" },
+      summary: {
+        en: "A predictive AI model I'm building to forecast commodity prices.",
+        pt: "Um modelo preditivo de IA que estou construindo para prever preços de commodities.",
+      },
+      description: {
+        en: "An ongoing research project: studying how to predict commodity prices with machine learning, from collecting and cleaning historical data to training and evaluating models, with the goal of turning the forecasts into something producers can actually use. The code will be published once it's ready.",
+        pt: "Um projeto de pesquisa em andamento: estudando como prever preços de commodities com machine learning, da coleta e limpeza de dados históricos ao treino e avaliação dos modelos, com o objetivo de transformar as previsões em algo que os produtores realmente consigam usar. O código vai ser publicado quando estiver pronto.",
+      },
+      tags: ["Machine Learning", "Python", { en: "Time series", pt: "Séries temporais" }],
+    },
+    {
+      title: { en: "Bass build & pedal mods", pt: "Baixo e pedais" },
+      kind: { en: "Instruments", pt: "Instrumentos" },
+      status: { en: "In progress", pt: "Em andamento" },
+      cover: "assets/img/creations/baixo.jpg",
+      coverPosition: "center 78%",
+      coverAlt: { en: "Sunburst bass body with pickup and wiring exposed", pt: "Corpo de baixo sunburst com captador e fiação expostos" },
+      summary: {
+        en: "A bass I'm building by hand and the guitar pedals I keep opening up and tinkering with.",
+        pt: "Um baixo que estou construindo à mão e os pedais de guitarra que vivo abrindo e modificando.",
+      },
+      description: {
+        en: "Hands on work away from the screen: assembling and wiring a bass from the body up, with pickup, bridge and electronics, and opening pedals like a Big Muff to understand the circuit, solder and experiment with the sound.",
+        pt: "Trabalho com as mãos, longe da tela: montando e ligando a elétrica de um baixo a partir do corpo, com captador, ponte e eletrônica, e abrindo pedais como um Big Muff para entender o circuito, soldar e experimentar com o som.",
+      },
+      media: [
+        { type: "image", src: "assets/img/creations/pedais.jpg", alt: { en: "A Big Muff pedal opened up next to a soldering iron", pt: "Um pedal Big Muff aberto ao lado de um ferro de solda" } },
+      ],
+    },
+    {
+      title: { en: "Paintings", pt: "Pinturas" },
+      kind: { en: "Art", pt: "Arte" },
+      cover: "assets/img/creations/pintura.jpg",
+      coverAlt: { en: "Painting on canvas reimagining the cover of By the Way by Red Hot Chili Peppers", pt: "Pintura em tela que reimagina a capa de By the Way, do Red Hot Chili Peppers" },
+      summary: {
+        en: "Paintings on canvas, like this take on the cover of By the Way.",
+        pt: "Pinturas em tela, como esta releitura da capa de By the Way.",
+      },
+      description: {
+        en: "Painting is one of the ways I make something with my hands. This one reimagines the cover of By the Way by Red Hot Chili Peppers, mixing the landscape, the blue figure and hand lettered type.",
+        pt: "Pintar é uma das formas que encontro de criar algo com as mãos. Esta reimagina a capa de By the Way, do Red Hot Chili Peppers, misturando a paisagem, a figura azul e as letras pintadas à mão.",
+      },
+    },
+    {
+      title: { en: "Music channel", pt: "Canal de música" },
+      kind: "YouTube · Instagram · TikTok",
+      status: { en: "Coming soon", pt: "Em breve" },
+      soon: true,
+      cover: "assets/img/creations/channel.svg",
+      coverAlt: { en: "Illustration of a play button over a sound wave", pt: "Ilustração de um botão de play sobre uma onda sonora" },
+      summary: {
+        en: "Videos about music, guitar and songwriting.",
+        pt: "Vídeos sobre música, guitarra e criação de músicas.",
+      },
+      description: {
+        en: "A channel to share what I play, build and learn: guitar, gear and pedals, and the process of creating music from the first idea to the finished track. Not live yet, stay tuned.",
+        pt: "Um canal para compartilhar o que eu toco, construo e aprendo: guitarra, equipamentos e pedais, e o processo de criar música da primeira ideia à faixa pronta. Ainda não está no ar, fique de olho.",
+      },
+    },
+  ],
+
   /* ---------- CONTATO ---------- */
   contactLede: {
     en: "Want to talk about a project, a role or just exchange ideas?",
