@@ -135,6 +135,9 @@ window.PORTFOLIO = {
      image: caminho em assets/img (opcional, aparece ao passar o mouse)
      imageStyle: "icon" = mostra a imagem pequena, girando, sem moldura (bom para ícones/logos)
      clicar no projeto abre "link" (ou "repo", se não houver link)
+     sem link nem repo: clicar expande o projeto. Nesse caso use
+       summary: resumo curto, sempre visível (description aparece ao expandir)
+       gallery: [{ src: "assets/img/...", alt: { en, pt } }] — imagens mostradas ao expandir
      featured: true = aparece com destaque */
   projects: [
     {
@@ -154,6 +157,10 @@ window.PORTFOLIO = {
     {
       title: { en: "AI Assistant for Agriculture", pt: "Assistente de IA para o Agro" },
       year: "2026",
+      summary: {
+        en: "An AI-powered field companion for farmers and agronomists — built to work even with limited internet.",
+        pt: "Um app com IA para acompanhar produtores rurais e agrônomos no campo — feito para funcionar mesmo com pouca internet.",
+      },
       description: {
         en: "A smart app that supports farmers and agronomists in the field: weather monitoring, commodity prices, a guide to pests, diseases and agricultural products, and *voice-logged* field activities. It uses computer vision to spot crop problems from a photo and an AI model trained on agribusiness data that keeps giving technical support even with limited internet access.",
         pt: "Aplicativo inteligente de apoio a produtores rurais e agrônomos no campo: monitoramento climático, cotações de commodities, guia de pragas, doenças e produtos agrícolas e registro de atividades *por voz*. Usa visão computacional para identificar problemas na lavoura por foto e um modelo de IA treinado com dados do setor que oferece suporte técnico mesmo com pouca internet.",
@@ -163,6 +170,11 @@ window.PORTFOLIO = {
       repo: "",
       note: { en: "Private · built at Tog Lab", pt: "Privado · feito na Tog Lab" },
       image: "",
+      gallery: [
+        { src: "assets/img/agro/diario.png", alt: { en: "Farm diary with field activities", pt: "Diário da fazenda com atividades de campo" } },
+        { src: "assets/img/agro/clima.png", alt: { en: "Weather forecast, UV index and wind", pt: "Previsão do tempo, índice UV e vento" } },
+        { src: "assets/img/agro/cotacoes.png", alt: { en: "Commodity and farm input prices", pt: "Cotações de commodities e insumos" } },
+      ],
     },
   ],
 

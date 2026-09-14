@@ -225,6 +225,41 @@ p em, li em { font-size: 1.18em; line-height: 1; }
 .project:has(.project-main) { cursor: pointer; }
 .project-main:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
+/* projetos sem site: botão que expande descrição + galeria */
+button.project-main {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0;
+  text-align: left; cursor: pointer; letter-spacing: inherit;
+}
+.project-toggle {
+  display: inline-grid; place-items: center; width: 30px; height: 30px; margin-left: 14px;
+  border: 1px solid var(--line); border-radius: 50%; vertical-align: middle;
+  font: 16px/1 var(--mono); color: var(--ink-2); transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .2s, color .2s;
+}
+.project-toggle::before { content: "+"; }
+.project.expandable:hover .project-toggle { border-color: var(--accent); color: var(--accent); }
+.project.open .project-toggle { transform: rotate(45deg); border-color: var(--accent); color: var(--accent); }
+.project-details {
+  grid-column: 2 / -1; display: grid; grid-template-rows: 0fr; visibility: hidden;
+  position: relative; z-index: 1;
+  transition: grid-template-rows .55s cubic-bezier(.2,.7,.2,1), visibility 0s linear .55s;
+}
+.project.open .project-details { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .55s cubic-bezier(.2,.7,.2,1), visibility 0s; }
+.project-details-inner { overflow: hidden; min-height: 0; }
+.details-text { color: var(--ink-2); max-width: 64ch; margin: 22px 0 0; }
+.gallery {
+  display: flex; gap: 16px; overflow-x: auto; padding: 24px 0 10px;
+  scroll-snap-type: x mandatory; scrollbar-width: thin;
+}
+.gallery figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
+.gallery img {
+  height: clamp(320px, 38vw, 460px); width: auto; max-width: none;
+  border-radius: 22px; background: var(--paper-2); border: 1px solid var(--line);
+}
+@media (max-width: 860px) {
+  .project .project-details { grid-column: 1 / -1; }
+  .gallery img { height: 380px; }
+}
+
 /* Pessoal */
 .personal-grid { columns: 2 280px; column-gap: 16px; }
 .card {

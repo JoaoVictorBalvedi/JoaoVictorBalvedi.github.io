@@ -104,15 +104,31 @@
     $("#filters").innerHTML = allTags.map((tag, i) =>
       `<button role="tab" aria-selected="${i === 0}" data-tag="${esc(tag)}" data-all="${i === 0}">${esc(tag)}</button>`).join("");
 
-    $("#projectList").innerHTML = D.projects.map((p) => {
+    $("#projectList").innerHTML = D.projects.map((p, i) => {
       const href = p.link || p.repo;
+      // sem site nem repositório: o projeto expande mostrando descrição e imagens
+      const expandable = !href && Boolean(p.summary || (p.gallery && p.gallery.length));
+      const detailsId = `project-details-${i}`;
       const title = `<span class="project-title">${esc(t(p.title))}</span>`;
+      let main = title;
+      if (href) main = `<a class="project-main" href="${esc(href)}" target="_blank" rel="noopener">${title}</a>`;
+      else if (expandable) main = `<button type="button" class="project-main" aria-expanded="false" aria-controls="${detailsId}">${title}<span class="project-toggle" aria-hidden="true"></span></button>`;
+
+      const details = expandable ? `
+          <div class="project-details" id="${detailsId}">
+            <div class="project-details-inner">
+              ${p.summary ? `<p class="details-text">${emph(p.description)}</p>` : ""}
+              ${p.gallery && p.gallery.length ? `<div class="gallery">${p.gallery.map((g) =>
+                `<figure><img src="${esc(g.src)}" alt="${esc(t(g.alt))}" loading="lazy"></figure>`).join("")}</div>` : ""}
+            </div>
+          </div>` : "";
+
       return `
-      <li class="project reveal${p.featured ? " featured" : ""}" data-tags="${esc((p.tags || []).map(t).join("|"))}" data-image="${esc(p.image || "")}" data-image-style="${esc(p.imageStyle || "")}">
+      <li class="project reveal${p.featured ? " featured" : ""}${expandable ? " expandable" : ""}" data-tags="${esc((p.tags || []).map(t).join("|"))}" data-image="${esc(p.image || "")}" data-image-style="${esc(p.imageStyle || "")}">
         <div class="project-link">
-          <h3>${href ? `<a class="project-main" href="${esc(href)}" target="_blank" rel="noopener">${title}</a>` : title}</h3>
+          <h3>${main}</h3>
           <span class="year mono">${esc(p.year)}</span>
-          <p class="desc">${emph(p.description)}</p>
+          <p class="desc">${emph(expandable && p.summary ? p.summary : p.description)}</p>
           <div class="project-foot">
             ${tagList(p.tags)}
             <span class="project-actions">
@@ -121,6 +137,7 @@
               ${p.note ? `<span class="project-note">${esc(t(p.note))}</span>` : ""}
             </span>
           </div>
+          ${details}
         </div>
       </li>`;
     }).join("");
@@ -156,6 +173,15 @@
     $$(".project").forEach((el) => {
       el.hidden = btn.dataset.all !== "true" && !el.dataset.tags.split("|").includes(btn.dataset.tag);
     });
+  });
+
+  /* ---------- Projetos que expandem ---------- */
+  $("#projectList").addEventListener("click", (e) => {
+    const btn = e.target.closest("button.project-main");
+    if (!btn) return;
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", String(open));
+    btn.closest(".project").classList.toggle("open", open);
   });
 
   /* ---------- Preview de imagem que segue o cursor ---------- */
