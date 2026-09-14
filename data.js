@@ -6,7 +6,6 @@
    Um texto simples ("...") aparece igual nos dois idiomas.
    Use *asteriscos* para destacar um trecho em itálico.
    Datas: "AAAA-MM" (ex.: "2025-12") ou só "AAAA". "end" vazio = atual.
-   Tudo marcado com [FILL IN] / [PREENCHER] é placeholder.
    ========================================================================== */
 
 window.PORTFOLIO = {
@@ -18,8 +17,8 @@ window.PORTFOLIO = {
     pt: "Construo *produtos digitais* — da interface à IA por trás dela.",
   },
   lede: {
-    en: "Full stack developer and Computer Science student. Currently building SaaS products at Tog Lab with React, Next.js, NestJS and AI-assisted workflows.",
-    pt: "Desenvolvedor full stack e estudante de Ciência da Computação. Hoje construo produtos SaaS na Tog Lab com React, Next.js, NestJS e workflows assistidos por IA.",
+    en: "Full stack developer and Computer Science student. Currently building SaaS products at Tog Lab with React, Next.js, NestJS and AI built into the workflow.",
+    pt: "Desenvolvedor full stack e estudante de Ciência da Computação. Hoje construo produtos SaaS na Tog Lab com React, Next.js, NestJS e IA no fluxo de trabalho.",
   },
   location: { en: "Curitiba, Brazil", pt: "Curitiba, Brasil" },
   timezone: "America/Sao_Paulo",
@@ -28,12 +27,12 @@ window.PORTFOLIO = {
   about: {
     en: [
       "Hi, I'm João, a full stack developer and Computer Science student at PUCPR. I like turning a problem into something that actually works: designing the solution, picking the right pieces and putting them together end to end, interfaces, APIs, databases and, more and more, the AI that ties them together.",
-      "Today I work at Tog Lab, where I'm building an event management platform for Cresol cooperative, and developing an application for the agribusiness sector with AI integrated to support producers directly. Before that, I co-founded a legal-tech startup that drafted legal filings with AI, which only fueled my taste for entrepreneurship and building things from scratch. I'm currently researching predictive models for commodity pricing, one of several things I dig into on the side: I seek to understand real world problems to actually solve them, and I'm always looking for ways my work can be useful to someone.",
+      "Today I work at Tog Lab, where I'm building an event management platform for Cresol cooperative, and developing an application for the agribusiness sector with AI integrated to support producers directly. Before that, I cofounded a legal tech startup that drafted legal filings with AI, which only fueled my taste for entrepreneurship and building things from scratch. I'm currently researching predictive models for commodity pricing, one of several things I dig into on the side: I seek to understand real world problems to actually solve them, and I'm always looking for ways my work can be useful to someone.",
       "What I actually care about is using AI well, building things that push forward instead of just following trends, and making sure what I ship actually helps the people using it. Outside of code, music and art take up a good part of my time, guitar, photography, video, drawing, whatever lets me make something with my hands and express my mind.",
     ],
     pt: [
       "Oi, eu sou o João, desenvolvedor full stack e estudante de Ciência da Computação na PUCPR. Gosto de transformar um problema em algo que realmente funciona: desenhar a solução, escolher as peças certas e juntar tudo de ponta a ponta, interfaces, APIs, bancos de dados e, cada vez mais, a IA que conecta tudo isso.",
-      "Hoje trabalho na Tog Lab, onde estou construindo uma plataforma de gestão de eventos para a cooperativa Cresol e desenvolvendo um aplicativo para o agronegócio com IA integrada para apoiar os produtores diretamente. Antes disso, co-fundei uma startup jurídica que gerava peças processuais com IA, o que só aumentou meu gosto por empreender e construir coisas do zero. Atualmente pesquiso modelos preditivos para preços de commodities, uma das várias coisas que exploro por conta própria: busco entender problemas do mundo real para realmente resolvê-los e estou sempre procurando formas de o meu trabalho ser útil para alguém.",
+      "Hoje trabalho na Tog Lab, onde estou construindo uma plataforma de gestão de eventos para a cooperativa Cresol e desenvolvendo um aplicativo para o agronegócio com IA integrada para apoiar os produtores diretamente. Antes disso, cofundei uma startup jurídica que gerava peças processuais com IA, o que só aumentou meu gosto por empreender e construir coisas do zero. Atualmente pesquiso modelos preditivos para preços de commodities, uma das várias coisas que exploro por conta própria: busco entender problemas do mundo real e resolver de verdade, e estou sempre procurando formas de o meu trabalho ser útil para alguém.",
       "O que realmente me importa é usar bem a IA, construir coisas que fazem avançar em vez de só seguir tendências e garantir que o que eu entrego realmente ajude quem usa. Fora do código, música e arte ocupam boa parte do meu tempo, guitarra, fotografia, vídeo, desenho, qualquer coisa que me deixe criar algo com as mãos e expressar o que penso.",
     ],
   },
@@ -44,8 +43,8 @@ window.PORTFOLIO = {
   ],
 
   now: [
-    { en: "Researching and studying a predictive AI model for commodity prices — from the data pipeline to the app that puts it to work", pt: "Pesquisando e estudando um modelo preditivo de IA para commodities — do pipeline de dados ao app que coloca ele para trabalhar" },
-    { en: "Exploring AI-assisted development workflows", pt: "Explorando workflows de desenvolvimento assistido por IA" },
+    { en: "Researching and studying a predictive AI model for commodity prices, from the data pipeline to the app that puts it to work", pt: "Pesquisando e estudando um modelo preditivo de IA para commodities, do pipeline de dados ao app que coloca ele para trabalhar" },
+    { en: "Exploring how AI can make development workflows faster and better", pt: "Explorando como a IA pode deixar o desenvolvimento mais rápido e melhor" },
     { en: "Studying Computer Science at PUCPR", pt: "Cursando Ciência da Computação na PUCPR" },
   ],
 
@@ -69,12 +68,12 @@ window.PORTFOLIO = {
       },
       highlights: {
         en: [
-          "Develop and evolve a web application across the stack — React, Next.js and TypeScript on the front end; NestJS, Prisma and PostgreSQL on the back end.",
+          "Develop and evolve a web application across the stack: React, Next.js and TypeScript on the front end; NestJS, Prisma and PostgreSQL on the back end.",
           "Plan and build an internal platform for managing and orchestrating events, owning features from database to UI.",
-          "Research and roll out *AI-assisted development workflows* that help the team ship faster with better code.",
+          "Research and roll out *AI in the development workflow* to help the team ship faster with better code.",
         ],
         pt: [
-          "Desenvolvo e evoluo uma aplicação web em toda a stack — React, Next.js e TypeScript no front; NestJS, Prisma e PostgreSQL no back.",
+          "Desenvolvo e evoluo uma aplicação web em toda a stack: React, Next.js e TypeScript no front; NestJS, Prisma e PostgreSQL no back.",
           "Planejo e construo uma plataforma interna de gestão e orquestração de eventos, cuidando das funcionalidades do banco à interface.",
           "Pesquiso e implemento *workflows de desenvolvimento assistido por IA* para o time entregar mais rápido e com código melhor.",
         ],
@@ -84,12 +83,12 @@ window.PORTFOLIO = {
     {
       start: "2024-01",
       end: "2025-12",
-      role: { en: "Co-founder & Full Stack Developer", pt: "Co-fundador & Desenvolvedor Full Stack" },
+      role: { en: "Cofounder & Full Stack Developer", pt: "Cofundador & Desenvolvedor Full Stack" },
       org: { en: "Legal AI Startup", pt: "Startup de IA Jurídica" },
       url: "",
       summary: {
-        en: "Co-founded a startup that uses AI to automatically draft legal filings.",
-        pt: "Co-fundei uma startup que usa IA para gerar peças processuais automaticamente.",
+        en: "Cofounded a startup that uses AI to automatically draft legal filings.",
+        pt: "Cofundei uma startup que usa IA para gerar peças processuais automaticamente.",
       },
       highlights: {
         en: [
@@ -98,7 +97,7 @@ window.PORTFOLIO = {
           "Winning project of PIBEP/PUCPR out of 15+ teams, later accelerated by Canastra Ventures and Sebrae.",
         ],
         pt: [
-          "Construí o back-end com NestJS, Prisma e bancos relacionais, e o front-end com React, Next.js e Tailwind.",
+          "Construí o backend com NestJS, Prisma e bancos relacionais, e o frontend com React, Next.js e Tailwind.",
           "Integrei assistants de IA (OpenAI API) para análise e geração de conteúdo jurídico.",
           "Projeto vencedor do PIBEP/PUCPR entre mais de 15 equipes, depois acelerado pela Canastra Ventures e pelo Sebrae.",
         ],
@@ -108,14 +107,14 @@ window.PORTFOLIO = {
     {
       start: "2023-10",
       end: "2024-12",
-      role: { en: "Back-end Intern", pt: "Estagiário Back-end" },
+      role: { en: "Backend Intern", pt: "Estagiário Backend" },
       org: "RP Info Sistemas",
       url: "",
       summary: {
-        en: "My first steps in the industry: back-end training, applied systems logic and following real projects while learning good programming practices.",
-        pt: "Meus primeiros passos no mercado: capacitação em back-end, lógica aplicada a sistemas e acompanhamento de projetos reais aprendendo boas práticas de programação.",
+        en: "My first steps in the industry: backend training, applied systems logic and following real projects while learning good programming practices.",
+        pt: "Meus primeiros passos no mercado: capacitação em backend, lógica aplicada a sistemas e acompanhamento de projetos reais aprendendo boas práticas de programação.",
       },
-      tags: ["Back-end"],
+      tags: ["Backend"],
     },
   ],
 
@@ -127,8 +126,8 @@ window.PORTFOLIO = {
       start: "2023",
       end: "",
       summary: {
-        en: "Where I joined PIBEP and co-founded my first startup, EstagIArio — now Super ADV.",
-        pt: "Onde participei do PIBEP e co-fundei minha primeira startup, a EstagIArio — hoje Super ADV.",
+        en: "Where I joined PIBEP and cofounded my first startup, EstagIArio, now Super ADV.",
+        pt: "Onde participei do PIBEP e cofundei minha primeira startup, a EstagIArio, hoje Super ADV.",
       },
     },
   ],
@@ -147,30 +146,30 @@ window.PORTFOLIO = {
       org: "Techstars · Curitiba",
       year: "2025",
       summary: {
-        en: "54 hours, a team formed at the event itself and an AI-powered MVP for agribusiness that took first place.",
+        en: "54 hours, a team formed at the event itself and an MVP using AI for agribusiness that took first place.",
         pt: "54 horas, uma equipe formada no próprio evento e um MVP com IA para o agronegócio que ficou em 1º lugar.",
       },
       description: {
-        en: "I won 1st place at Techstars Startup Weekend AI 2025, an intensive 54-hour competition where I teamed up with people I met at the event itself. We built an MVP for agribusiness: a solution that centralizes relevant information, generates personalized alerts and connects data between farmers in the same region to help them anticipate risks, make better decisions about the harvest and optimize resources — with mentorship throughout from experienced professionals in entrepreneurship, innovation and investment.",
+        en: "I won 1st place at Techstars Startup Weekend AI 2025, an intensive 54 hour competition where I teamed up with people I met at the event itself. We built an MVP for agribusiness: a solution that centralizes relevant information, generates personalized alerts and connects data between farmers in the same region to help them anticipate risks, make better decisions about the harvest and optimize resources, with mentorship throughout from experienced professionals in entrepreneurship, innovation and investment.",
         pt: "Conquistei o 1º lugar no Techstars Startup Weekend AI 2025, uma competição intensiva de 54 horas na qual formei equipe com participantes que conheci durante o próprio evento e desenvolvemos um MVP voltado ao agronegócio, criando uma solução capaz de centralizar informações relevantes, gerar alertas personalizados e conectar dados entre produtores de uma mesma região para ajudá-los a antecipar riscos, tomar melhores decisões sobre a safra e otimizar recursos, contando durante o processo com mentorias de profissionais experientes em empreendedorismo, inovação e investimento.",
       },
       media: [
         { type: "image", src: "assets/img/recognition/techstars-trofeu.jpg", alt: { en: "Holding the 1st place trophy at Techstars Startup Weekend AI Curitiba", pt: "Com o troféu de 1º lugar no Techstars Startup Weekend AI Curitiba" } },
-        { type: "image", src: "assets/img/recognition/techstars-equipe.jpg", alt: { en: "The team planning the business model on a sticky-note board", pt: "A equipe planejando o modelo de negócio num quadro de post-its" } },
+        { type: "image", src: "assets/img/recognition/techstars-equipe.jpg", alt: { en: "The team planning the business model on a board of sticky notes", pt: "A equipe planejando o modelo de negócio num quadro de anotações" } },
       ],
     },
     {
-      title: "PIBEP — PUCPR",
+      title: "PIBEP",
       badge: { en: "Winner", pt: "Vencedor" },
       org: "PUCPR · Sebrae Paraná",
       year: "2024",
       summary: {
-        en: "Entrepreneurship and research program where we founded EstagIArio — later Super ADV — and took first place.",
-        pt: "Programa de empreendedorismo e pesquisa em que fundamos a EstagIArio — depois Super ADV — e conquistamos o 1º lugar.",
+        en: "Entrepreneurship and research program where we founded EstagIArio (later Super ADV) and took first place.",
+        pt: "Programa de empreendedorismo e pesquisa em que fundamos a EstagIArio (depois Super ADV) e conquistamos o 1º lugar.",
       },
       description: {
         en: [
-          "I was a winner of PIBEP — PUCPR's Institutional Entrepreneurship and Research Scholarship Program, run in partnership with Sebrae Paraná — a journey focused on developing innovative ideas and training new entrepreneurs. Throughout the program, I went through every stage of structuring and validating a business, with mentorship from PUCPR professors and entrepreneurship experts, plus hands-on activities, pitches and networking opportunities.",
+          "I was a winner of PIBEP, PUCPR's Institutional Entrepreneurship and Research Scholarship Program run in partnership with Sebrae Paraná, a journey focused on developing innovative ideas and training new entrepreneurs. Throughout the program, I went through every stage of structuring and validating a business, with mentorship from PUCPR professors and entrepreneurship experts, plus hands on activities, pitches and networking opportunities.",
           "It was within PIBEP that we founded EstagIArio, a startup later renamed Super ADV, which took first place in the program. The experience was key to turning the initial idea into a business, developing our entrepreneurial vision and opening doors to new pitches, competitions, connections with the innovation ecosystem and opportunities with Sebrae and other startup development programs.",
         ],
         pt: [
@@ -198,8 +197,8 @@ window.PORTFOLIO = {
       title: "Made in Heaven",
       year: "2026",
       description: {
-        en: "A desktop app that *listens to a song and shows the chords* live on a guitar neck — fully local, nothing sent to a server. A Rust (Tauri) shell runs a Python ML worker for chord recognition; the app also maps scales across the fretboard and suggests chord progressions.",
-        pt: "App desktop que *escuta uma música e mostra os acordes* ao vivo num braço de guitarra — tudo local, nada enviado para servidor. Um shell em Rust (Tauri) roda um worker Python com ML para reconhecer acordes; o app também mostra escalas pelo braço e sugere progressões.",
+        en: "A desktop app that *listens to a song and shows the chords* live on a guitar neck, fully local, with nothing sent to a server. A Rust (Tauri) shell runs a Python ML worker for chord recognition; the app also maps scales across the fretboard and suggests chord progressions.",
+        pt: "App desktop que *escuta uma música e mostra os acordes* ao vivo num braço de guitarra, tudo local, sem enviar nada para servidor. Um shell em Rust (Tauri) roda um worker Python com ML para reconhecer acordes; o app também mostra escalas pelo braço e sugere progressões.",
       },
       tags: ["Rust", "Tauri", "Svelte", "Python", { en: "AI", pt: "IA" }],
       link: "https://joaovictorbalvedi.github.io/made-in-heaven/",
@@ -212,14 +211,14 @@ window.PORTFOLIO = {
       title: { en: "AI Assistant for Agriculture", pt: "Assistente de IA para o Agro" },
       year: "2026",
       summary: {
-        en: "An AI-powered field companion for farmers and agronomists — built to work even with limited internet.",
-        pt: "Um app com IA para acompanhar produtores rurais e agrônomos no campo — feito para funcionar mesmo com pouca internet.",
+        en: "An AI field companion for farmers and agronomists, built to work even with limited internet.",
+        pt: "Um app com IA para acompanhar produtores rurais e agrônomos no campo, feito para funcionar mesmo com pouca internet.",
       },
       description: {
-        en: "A smart app that supports farmers and agronomists in the field: weather monitoring, commodity prices, a guide to pests, diseases and agricultural products, and *voice-logged* field activities. It uses computer vision to spot crop problems from a photo and an AI model trained on agribusiness data that keeps giving technical support even with limited internet access.",
+        en: "A smart app that supports farmers and agronomists in the field: weather monitoring, commodity prices, a guide to pests, diseases and agricultural products, and field activities *logged by voice*. It uses computer vision to spot crop problems from a photo and an AI model trained on agribusiness data that keeps giving technical support even with limited internet access.",
         pt: "Aplicativo inteligente de apoio a produtores rurais e agrônomos no campo: monitoramento climático, cotações de commodities, guia de pragas, doenças e produtos agrícolas e registro de atividades *por voz*. Usa visão computacional para identificar problemas na lavoura por foto e um modelo de IA treinado com dados do setor que oferece suporte técnico mesmo com pouca internet.",
       },
-      tags: [{ en: "AI", pt: "IA" }, { en: "Computer Vision", pt: "Visão Computacional" }, { en: "Voice", pt: "Voz" }, "Offline-first", "Agro"],
+      tags: [{ en: "AI", pt: "IA" }, { en: "Computer Vision", pt: "Visão Computacional" }, { en: "Voice", pt: "Voz" }, "Offline", "Agro"],
       link: "",
       repo: "",
       note: { en: "Private · built at Tog Lab", pt: "Privado · feito na Tog Lab" },
@@ -235,14 +234,21 @@ window.PORTFOLIO = {
   /* ---------- PESSOAL ----------
      Blocos livres. type: "list" | "text" | "quote" */
   personalIntro: {
-    en: "Away from the keyboard — things I like, do and collect.",
-    pt: "Longe do teclado — coisas que eu gosto, faço e coleciono.",
+    en: "Away from the keyboard: things I like, do and collect.",
+    pt: "Longe do teclado: coisas que eu gosto, faço e coleciono.",
   },
   personal: [
-    { title: "Hobbies", type: "list", items: { en: ["[FILL IN]", "[FILL IN]"], pt: ["[PREENCHER]", "[PREENCHER]"] } },
-    { title: { en: "Reading", pt: "Lendo" }, type: "list", items: { en: ["Book — Author"], pt: ["Livro — Autor"] } },
-    { title: { en: "Listening to", pt: "Ouvindo" }, type: "list", items: { en: ["Artist / Album"], pt: ["Artista / Álbum"] } },
-    { title: { en: "A quote", pt: "Uma frase" }, type: "quote", text: { en: "A quote you like.", pt: "Uma citação que você gosta." }, author: { en: "Author", pt: "Autor" } },
+    { title: { en: "Reading", pt: "Lendo" }, type: "list", items: { en: ["The Myth of Sisyphus, by Albert Camus"], pt: ["O Mito de Sísifo, de Albert Camus"] } },
+    { title: { en: "Listening to", pt: "Ouvindo" }, type: "list", items: { en: ["Discipline, by King Crimson"], pt: ["Discipline, do King Crimson"] } },
+    {
+      title: { en: "A quote", pt: "Uma frase" },
+      type: "quote",
+      text: {
+        en: "A man is more a man through the things he keeps to himself than through those he says.",
+        pt: "Um homem é mais homem pelas coisas que cala do que pelas que diz.",
+      },
+      author: "Albert Camus",
+    },
   ],
 
   /* ---------- CONTATO ---------- */
@@ -253,6 +259,6 @@ window.PORTFOLIO = {
   email: "joaovictor2005balvedi@gmail.com",
   socials: [
     { label: "GitHub", url: "https://github.com/JoaoVictorBalvedi" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/" }, // [PREENCHER]
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/jo%C3%A3o-victor-balvedi-57421a309" },
   ],
 };

@@ -45,7 +45,7 @@
     const [y, m] = String(v).split("-");
     return m ? `${MONTHS[lang][+m - 1]} ${y}` : y;
   };
-  const period = (a, b) => `${date(a)} — ${date(b)}`;
+  const period = (a, b) => `${date(a)} → ${date(b)}`;
   const tagList = (tags = []) => `<ul class="tags">${tags.map((tag) => `<li>${esc(t(tag))}</li>`).join("")}</ul>`;
   const extLink = (url, label) => `<a href="${esc(url)}" target="_blank" rel="noopener">${label}</a>`;
 
@@ -74,7 +74,7 @@
   function render() {
     const L = UI[lang];
     document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
-    document.title = `${D.name} — ${t(D.role)}`;
+    document.title = `${D.name} · ${t(D.role)}`;
 
     $$("[data-i18n]").forEach((el) => { el.textContent = L[el.dataset.i18n]; });
     $$("[data-i18n-aria]").forEach((el) => el.setAttribute("aria-label", L[el.dataset.i18nAria]));
@@ -187,7 +187,7 @@
     $("#personalGrid").innerHTML = D.personal.map((c) => {
       let body;
       if (c.type === "list") body = `<ul>${t(c.items).map((i) => `<li>${emph(i)}</li>`).join("")}</ul>`;
-      else if (c.type === "quote") body = `<blockquote>${esc(t(c.text))}</blockquote>${c.author ? `<cite>— ${esc(t(c.author))}</cite>` : ""}`;
+      else if (c.type === "quote") body = `<blockquote>${esc(t(c.text))}</blockquote>${c.author ? `<cite>${esc(t(c.author))}</cite>` : ""}`;
       else body = `<p>${emph(c.text)}</p>`;
       return `<article class="card reveal"><h3 class="mono">${esc(t(c.title))}</h3>${body}</article>`;
     }).join("");

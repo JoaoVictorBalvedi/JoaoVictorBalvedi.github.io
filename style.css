@@ -152,7 +152,7 @@ p em, li em { font-size: 1.18em; line-height: 1; }
 .job-place { display: block; margin-top: 4px; color: var(--ink-3); font: 11px var(--mono); text-transform: uppercase; }
 .highlights { list-style: none; padding: 0; margin: 12px 0 14px; max-width: 64ch; }
 .highlights li { position: relative; padding-left: 22px; margin: 6px 0; color: var(--ink-2); }
-.highlights li::before { content: "\2014"; position: absolute; left: 0; color: var(--accent); }
+.highlights li::before { content: "\2192"; position: absolute; left: 0; color: var(--accent); }
 
 /* Formação: subtítulo dentro de Experiência */
 .subsection-title {
