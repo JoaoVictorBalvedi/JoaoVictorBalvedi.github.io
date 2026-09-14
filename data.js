@@ -267,14 +267,21 @@ window.PORTFOLIO = {
       cover: "assets/img/creations/claude-review.svg",
       coverAlt: { en: "Illustration of a pull request diff with an AI review comment", pt: "Ilustração de um diff de pull request com um comentário de revisão por IA" },
       summary: {
-        en: "An automatic pull request reviewer powered by Claude.",
-        pt: "Um revisor automático de pull requests usando o Claude.",
+        en: "A Claude powered reviewer that reads every pull request before a human does.",
+        pt: "Um revisor com Claude que lê cada pull request antes de qualquer humano.",
       },
       description: {
-        en: "A GitHub Action that uses Claude to review pull requests automatically, so the team gets feedback on every change faster.",
-        pt: "Uma GitHub Action que usa o Claude para revisar pull requests automaticamente, para o time receber feedback sobre cada mudança mais rápido.",
+        en: [
+          "Code review is where quality is won or lost, and also where teams wait the longest. Claude Review Action is a GitHub Action that puts Claude on every pull request: as soon as a change is opened, it reads the diff and gives the team a first review, so people can spend their attention on the decisions that really need them.",
+          "It came out of my work on AI assisted development at Tog Lab, where the goal is simple: ship faster without letting code quality slip.",
+        ],
+        pt: [
+          "Code review é onde a qualidade se ganha ou se perde, e também onde os times mais esperam. A Claude Review Action é uma GitHub Action que coloca o Claude em cada pull request: assim que uma mudança é aberta, ele lê o diff e faz uma primeira revisão, para que as pessoas possam dedicar atenção às decisões que realmente precisam delas.",
+          "Ela nasceu do meu trabalho com desenvolvimento assistido por IA na Tog Lab, onde o objetivo é simples: entregar mais rápido sem deixar a qualidade do código cair.",
+        ],
       },
       tags: ["GitHub Actions", "Claude", { en: "AI", pt: "IA" }],
+      links: [{ label: "GitHub", url: "https://github.com/toglab/claude-review-action" }],
       note: { en: "Private repository · Tog Lab", pt: "Repositório privado · Tog Lab" },
     },
     {

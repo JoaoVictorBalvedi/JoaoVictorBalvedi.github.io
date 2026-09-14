@@ -14,7 +14,7 @@
       scroll: "↓ scroll", footer: "Handmade · HTML, CSS & JS", top: "↑ top",
       langAria: "Mudar para português", themeAria: "Toggle light/dark theme",
       scrollAria: "Scroll to content", filterAria: "Filter projects",
-      prev: "Previous image", next: "Next image", creations: "Creations",
+      prev: "Previous image", next: "Next image", creations: "Creations", closeAria: "Close",
     },
     pt: {
       about: "Sobre", experience: "Experiência", projects: "Projetos", personal: "Pessoal", contact: "Contato",
@@ -23,7 +23,7 @@
       scroll: "↓ rolar", footer: "Feito à mão · HTML, CSS & JS", top: "↑ topo",
       langAria: "Switch to English", themeAria: "Alternar tema claro/escuro",
       scrollAria: "Rolar para o conteúdo", filterAria: "Filtrar projetos",
-      prev: "Imagem anterior", next: "Próxima imagem", creations: "Criações",
+      prev: "Imagem anterior", next: "Próxima imagem", creations: "Criações", closeAria: "Fechar",
     },
   };
   const MONTHS = {
@@ -55,19 +55,30 @@
     ? `<figure><video src="${esc(m.src)}"${m.poster ? ` poster="${esc(m.poster)}"` : ""} controls playsinline preload="metadata" aria-label="${esc(t(m.alt))}"></video></figure>`
     // imagens pequenas não são ampliadas (evita ficar borrado)
     : `<figure><img src="${esc(m.src)}" alt="${esc(t(m.alt))}" loading="lazy" onload="if(this.naturalHeight&&this.naturalHeight<this.clientHeight)this.style.height=this.naturalHeight+'px'"></figure>`;
+  const galleryBlock = (media) => media && media.length ? `
+        <div class="gallery-wrap">
+          <button type="button" class="gallery-nav gallery-prev" aria-label="${UI[lang].prev}" disabled></button>
+          <div class="gallery">${media.map(mediaItem).join("")}</div>
+          <button type="button" class="gallery-nav gallery-next" aria-label="${UI[lang].next}"></button>
+        </div>` : "";
   const detailsBlock = (id, text, media, extra = "") => `
     <div class="project-details" id="${id}">
       <div class="project-details-inner">
         ${text ? paragraphs(text) : ""}
         ${extra}
-        ${media && media.length ? `
-        <div class="gallery-wrap">
-          <button type="button" class="gallery-nav gallery-prev" aria-label="${UI[lang].prev}" disabled></button>
-          <div class="gallery">${media.map(mediaItem).join("")}</div>
-          <button type="button" class="gallery-nav gallery-next" aria-label="${UI[lang].next}"></button>
-        </div>` : ""}
+        ${galleryBlock(media)}
       </div>
     </div>`;
+
+  // pedaços reaproveitados entre o card da criação e o visualizador
+  const coverStyle = (c) => (c.coverPosition ? ` style="object-position:${esc(c.coverPosition)}"` : "");
+  const creationMeta = (c) => `<span class="creation-meta mono"><span>${esc(t(c.kind))}</span>${c.year ? `<span>${esc(c.year)}</span>` : ""}${
+    c.status ? `<span class="badge mono${c.soon ? " badge-soon" : ""}">${esc(t(c.status))}</span>` : ""}</span>`;
+  const creationExtra = (c) => {
+    const links = (c.links || []).map((l) => extLink(l.url, `${esc(t(l.label))} ↗`)).join("");
+    const note = c.note ? `<span class="project-note">${esc(t(c.note))}</span>` : "";
+    return `${c.tags ? tagList(c.tags) : ""}${links || note ? `<p class="creation-links">${links}${note}</p>` : ""}`;
+  };
 
   /* ---------- Renderização ---------- */
   let firstRender = true;
@@ -193,26 +204,18 @@
       return `<article class="card reveal"><h3 class="mono">${esc(t(c.title))}</h3>${body}</article>`;
     }).join("");
 
-    // Criações: cards com capa; clicar expande com detalhes
+    // Criações: cards fixos no grid; clicar abre o visualizador animado
+    closeViewer(true);
     $("#creationsIntro").textContent = t(D.creationsIntro);
-    $("#creationList").innerHTML = (D.creations || []).map((c, i) => {
-      const id = `creation-details-${i}`;
-      const status = c.status ? `<span class="badge mono${c.soon ? " badge-soon" : ""}">${esc(t(c.status))}</span>` : "";
-      const links = (c.links || []).map((l) => extLink(l.url, `${esc(t(l.label))} ↗`)).join("");
-      const note = c.note ? `<span class="project-note">${esc(t(c.note))}</span>` : "";
-      const extra = `${c.tags ? tagList(c.tags) : ""}${links || note ? `<p class="creation-links">${links}${note}</p>` : ""}`;
-      const position = c.coverPosition ? ` style="object-position:${esc(c.coverPosition)}"` : "";
-      return `
-      <li class="creation reveal expandable${c.soon ? " soon" : ""}">
-        <button type="button" class="creation-main expand-btn" aria-expanded="false" aria-controls="${id}">
-          <span class="creation-cover"><img src="${esc(c.cover)}" alt="${esc(t(c.coverAlt))}" loading="lazy"${position}></span>
-          <span class="creation-meta mono"><span>${esc(t(c.kind))}</span>${c.year ? `<span>${esc(c.year)}</span>` : ""}${status}</span>
+    $("#creationList").innerHTML = (D.creations || []).map((c, i) => `
+      <li class="creation reveal${c.soon ? " soon" : ""}">
+        <button type="button" class="creation-main" data-creation="${i}" aria-haspopup="dialog">
+          <span class="creation-cover"><img src="${esc(c.cover)}" alt="${esc(t(c.coverAlt))}" loading="lazy"${coverStyle(c)}></span>
+          ${creationMeta(c)}
           <span class="creation-title"><span class="project-title">${esc(t(c.title))}</span><span class="project-toggle" aria-hidden="true"></span></span>
           <span class="creation-summary">${emph(c.summary)}</span>
         </button>
-        ${detailsBlock(id, c.description, c.media, extra)}
-      </li>`;
-    }).join("");
+      </li>`).join("");
 
     // Contato
     $("#contactLede").textContent = t(D.contactLede);
@@ -282,6 +285,139 @@
     if (e.target instanceof HTMLImageElement && e.target.closest(".gallery")) requestAnimationFrame(updateGalleryNavs);
   }, true);
   addEventListener("resize", () => requestAnimationFrame(updateGalleryNavs));
+
+  /* ---------- Visualizador das criações ----------
+     A capa "voa" do card até o painel (técnica FLIP) e os textos entram em sequência.
+     O grid de cards não muda de lugar. */
+  const viewer = $("#viewer");
+  const viewerCover = $("#viewerCover"), viewerInfo = $("#viewerInfo");
+  const viewerMedia = viewer.querySelector(".viewer-media");
+  const viewerScroll = viewer.querySelector(".viewer-scroll");
+  const viewerSheet = viewer.querySelector(".viewer-sheet");
+  const viewerBackdrop = viewer.querySelector(".viewer-backdrop");
+  const EASE = "cubic-bezier(.2,.7,.2,1)";
+  let viewerTrigger = null, viewerBusy = false, viewerClosing = false, viewerAnims = [];
+
+  // trava a rolagem da página sem deslocar o layout (compensa a largura da barra de rolagem)
+  const lockScroll = (on) => {
+    const root = document.documentElement;
+    if (on) root.style.setProperty("--sb", `${innerWidth - root.clientWidth}px`);
+    else root.style.removeProperty("--sb");
+    root.classList.toggle("viewer-lock", on);
+  };
+
+  // anima a caixa da capa entre a posição do card e a do painel
+  const flip = (fromEl, toEl, reverse) => {
+    const a = fromEl.getBoundingClientRect(), b = toEl.getBoundingClientRect();
+    const frames = [
+      { transform: `translate(${a.left - b.left}px, ${a.top - b.top}px) scale(${a.width / b.width}, ${a.height / b.height})`, borderRadius: "8px" },
+      { transform: "none", borderRadius: "14px" },
+    ];
+    return toEl.animate(reverse ? frames.reverse() : frames, { duration: 640, easing: EASE, fill: "both" });
+  };
+  const staggered = () => [viewer.querySelector(".viewer-close"), ...viewerInfo.querySelectorAll(".viewer-anim")];
+
+  function openViewer(btn) {
+    if (viewerBusy || viewerClosing) return;
+    const c = D.creations[+btn.dataset.creation];
+    viewerTrigger = btn;
+    viewerCover.src = c.cover;
+    viewerCover.alt = t(c.coverAlt);
+    viewerCover.style.objectPosition = c.coverPosition || "";
+    viewerInfo.innerHTML = `
+      <div class="viewer-anim">${creationMeta(c)}</div>
+      <h3 class="viewer-title viewer-anim" id="viewerTitle">${esc(t(c.title))}</h3>
+      <p class="viewer-summary viewer-anim">${emph(c.summary)}</p>
+      <div class="viewer-anim">${c.description ? paragraphs(c.description) : ""}${creationExtra(c)}</div>
+      ${c.media && c.media.length ? `<div class="viewer-anim">${galleryBlock(c.media)}</div>` : ""}`;
+    viewer.hidden = false;
+    viewerScroll.scrollTop = 0;
+    lockScroll(true);
+    btn.closest(".creation").classList.add("is-open");
+    viewer.querySelector(".viewer-close").focus({ preventScroll: true });
+    requestAnimationFrame(updateGalleryNavs);
+    if (reduceMotion) return;
+
+    viewerBusy = true;
+    const anims = [
+      viewerBackdrop.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, easing: "ease-out", fill: "both" }),
+      viewerSheet.animate([{ opacity: 0, transform: "scale(.96)" }, { opacity: 1, transform: "none" }], { duration: 520, delay: 90, easing: EASE, fill: "both" }),
+      flip(btn.querySelector(".creation-cover"), viewerMedia),
+      ...staggered().map((el, i) => el.animate(
+        [{ opacity: 0, transform: "translateY(22px)" }, { opacity: 1, transform: "none" }],
+        { duration: 560, delay: 220 + i * 70, easing: EASE, fill: "both" })),
+    ];
+    viewerAnims = anims;
+    Promise.all(anims.map((a) => a.finished)).then(() => {
+      if (viewerAnims !== anims) return; // o fechamento assumiu no meio da abertura
+      anims.forEach((a) => a.cancel());
+      viewerAnims = [];
+      viewerBusy = false;
+    }).catch(() => {});
+  }
+
+  function closeViewer(instant) {
+    if (viewer.hidden || (viewerClosing && !instant)) return;
+    const btn = viewerTrigger;
+    const done = () => {
+      viewer.hidden = true;
+      lockScroll(false);
+      viewerInfo.querySelectorAll("video").forEach((v) => v.pause());
+      viewerInfo.innerHTML = "";
+      if (btn) {
+        const card = btn.closest(".creation");
+        if (card) card.classList.remove("is-open");
+        if (!instant && btn.isConnected) btn.focus({ preventScroll: true });
+      }
+      viewerTrigger = null;
+      viewerBusy = false;
+      viewerClosing = false;
+    };
+    if (instant || reduceMotion || !btn || !btn.isConnected) {
+      viewerAnims.forEach((a) => a.cancel());
+      viewerAnims = [];
+      return done();
+    }
+
+    // fechou enquanto ainda abria: toca a abertura de trás para frente a partir de onde está
+    if (viewerBusy && viewerAnims.length) {
+      viewerClosing = true;
+      const rev = viewerAnims;
+      viewerAnims = [];
+      rev.forEach((a) => a.reverse());
+      Promise.all(rev.map((a) => a.finished)).then(() => { done(); rev.forEach((a) => a.cancel()); }).catch(() => {});
+      return;
+    }
+
+    viewerClosing = true;
+    viewerScroll.scrollTop = 0;
+    const anims = [
+      ...staggered().map((el) => el.animate(
+        [{ opacity: 1 }, { opacity: 0, transform: "translateY(12px)" }], { duration: 220, easing: "ease-in", fill: "both" })),
+      flip(btn.querySelector(".creation-cover"), viewerMedia, true),
+      viewerSheet.animate([{ opacity: 1 }, { opacity: 0, transform: "scale(.96)" }], { duration: 380, delay: 60, easing: EASE, fill: "both" }),
+      viewerBackdrop.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 460, delay: 160, easing: "ease-in", fill: "both" }),
+    ];
+    Promise.all(anims.map((a) => a.finished)).then(() => { done(); anims.forEach((a) => a.cancel()); }).catch(() => {});
+  }
+
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-creation]");
+    if (trigger) return openViewer(trigger);
+    if (e.target.closest("#viewer [data-close]")) closeViewer();
+  });
+
+  addEventListener("keydown", (e) => {
+    if (viewer.hidden) return;
+    if (e.key === "Escape") closeViewer();
+    if (e.key === "Tab") {
+      // mantém o foco dentro do painel enquanto ele está aberto
+      const focusable = $$("#viewer button:not([disabled]), #viewer a[href], #viewer video");
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   /* ---------- Preview de imagem que segue o cursor ---------- */
   const preview = $("#preview"), previewImg = preview.querySelector("img");
