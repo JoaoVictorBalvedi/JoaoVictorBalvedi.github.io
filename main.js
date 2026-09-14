@@ -202,7 +202,11 @@
   }
   if (canHover) {
     let px = 0, py = 0, tx = 0, ty = 0;
-    addEventListener("mousemove", (e) => { tx = e.clientX + 200; ty = e.clientY; });
+    // ícones ficam colados no cursor; imagens retangulares, mais afastadas
+    addEventListener("mousemove", (e) => {
+      tx = e.clientX + (preview.classList.contains("icon") ? 60 : 200);
+      ty = e.clientY;
+    });
     const follow = () => {
       px += (tx - px) * 0.15; py += (ty - py) * 0.15;
       preview.style.left = px + "px"; preview.style.top = py + "px";

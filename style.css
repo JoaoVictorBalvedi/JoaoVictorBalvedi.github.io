@@ -214,7 +214,7 @@ p em, li em { font-size: 1.18em; line-height: 1; }
 }
 .preview.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .preview img { width: 100%; height: 100%; object-fit: cover; }
-.preview.icon { width: 110px; aspect-ratio: 1; border-radius: 50%; overflow: visible; box-shadow: none; }
+.preview.icon { width: 80px; aspect-ratio: 1; border-radius: 50%; overflow: visible; box-shadow: none; }
 .preview.icon img { object-fit: contain; filter: drop-shadow(0 18px 30px rgba(0,0,0,.28)); animation: spin 6s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -231,7 +231,7 @@ button.project-main {
   text-align: left; cursor: pointer; letter-spacing: inherit;
 }
 .project-toggle {
-  display: inline-grid; place-items: center; width: 30px; height: 30px; margin-left: 14px;
+  display: inline-grid; place-items: center; width: 30px; height: 30px; margin-left: 26px;
   border: 1px solid var(--line); border-radius: 50%; vertical-align: middle;
   font: 16px/1 var(--mono); color: var(--ink-2); transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .2s, color .2s;
 }
