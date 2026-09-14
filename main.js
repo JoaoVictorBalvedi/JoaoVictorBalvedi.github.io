@@ -118,6 +118,7 @@
             <span class="project-actions">
               ${p.link ? extLink(p.link, `${L.live} ↗`) : ""}
               ${p.repo ? extLink(p.repo, `${L.code} ↗`) : ""}
+              ${p.note ? `<span class="project-note">${esc(t(p.note))}</span>` : ""}
             </span>
           </div>
         </div>
