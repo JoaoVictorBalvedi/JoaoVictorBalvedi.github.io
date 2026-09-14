@@ -42,7 +42,7 @@ window.PORTFOLIO = {
   ],
 
   now: [
-    { en: "Building an event orchestration platform at Tog Lab", pt: "Construindo uma plataforma de orquestração de eventos na Tog Lab" },
+    { en: "Researching and studying a predictive AI model for commodity prices — from the data pipeline to the app that puts it to work", pt: "Pesquisando e estudando um modelo preditivo de IA para commodities — do pipeline de dados ao app que coloca ele para trabalhar" },
     { en: "Exploring AI-assisted development workflows", pt: "Explorando workflows de desenvolvimento assistido por IA" },
     { en: "Studying Computer Science at PUCPR", pt: "Cursando Ciência da Computação na PUCPR" },
   ],

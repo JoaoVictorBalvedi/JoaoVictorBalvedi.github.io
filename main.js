@@ -14,6 +14,7 @@
       scroll: "↓ scroll", footer: "Handmade · HTML, CSS & JS", top: "↑ top",
       langAria: "Mudar para português", themeAria: "Toggle light/dark theme",
       scrollAria: "Scroll to content", filterAria: "Filter projects",
+      prev: "Previous image", next: "Next image",
     },
     pt: {
       about: "Sobre", experience: "Experiência", projects: "Projetos", personal: "Pessoal", contact: "Contato",
@@ -22,6 +23,7 @@
       scroll: "↓ rolar", footer: "Feito à mão · HTML, CSS & JS", top: "↑ topo",
       langAria: "Switch to English", themeAria: "Alternar tema claro/escuro",
       scrollAria: "Rolar para o conteúdo", filterAria: "Filtrar projetos",
+      prev: "Imagem anterior", next: "Próxima imagem",
     },
   };
   const MONTHS = {
@@ -57,7 +59,12 @@
     <div class="project-details" id="${id}">
       <div class="project-details-inner">
         ${text ? paragraphs(text) : ""}
-        ${media && media.length ? `<div class="gallery">${media.map(mediaItem).join("")}</div>` : ""}
+        ${media && media.length ? `
+        <div class="gallery-wrap">
+          <button type="button" class="gallery-nav gallery-prev" aria-label="${UI[lang].prev}" disabled></button>
+          <div class="gallery">${media.map(mediaItem).join("")}</div>
+          <button type="button" class="gallery-nav gallery-next" aria-label="${UI[lang].next}"></button>
+        </div>` : ""}
       </div>
     </div>`;
 
@@ -195,6 +202,7 @@
     // Animação de entrada só no primeiro carregamento
     $$("main .reveal").forEach((el) => (firstRender ? revealObs.observe(el) : el.classList.add("in")));
     firstRender = false;
+    requestAnimationFrame(updateGalleryNavs);
   }
 
   /* ---------- Filtros de projeto ---------- */
@@ -216,7 +224,42 @@
     btn.setAttribute("aria-expanded", String(open));
     item.classList.toggle("open", open);
     if (!open) item.querySelectorAll("video").forEach((v) => v.pause());
+    requestAnimationFrame(updateGalleryNavs);
   });
+
+  /* ---------- Galeria: botões anterior/próxima ---------- */
+  // esconde a seta do lado em que não há mais imagens (e as duas, se tudo couber)
+  function updateGalleryNavs() {
+    $$(".gallery-wrap").forEach((wrap) => {
+      const g = wrap.querySelector(".gallery");
+      const max = g.scrollWidth - g.clientWidth;
+      wrap.querySelector(".gallery-prev").disabled = g.scrollLeft <= 2;
+      wrap.querySelector(".gallery-next").disabled = g.scrollLeft >= max - 2;
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    const nav = e.target.closest(".gallery-nav");
+    if (!nav) return;
+    const g = nav.parentElement.querySelector(".gallery");
+    const items = [...g.children];
+    const forward = nav.classList.contains("gallery-next");
+    // pula para o início da próxima (ou anterior) imagem
+    const target = forward
+      ? items.find((f) => f.offsetLeft > g.scrollLeft + 4)
+      : items.reverse().find((f) => f.offsetLeft < g.scrollLeft - 4);
+    const left = target ? target.offsetLeft : forward ? g.scrollWidth : 0;
+    g.scrollTo({ left, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+
+  // atualiza as setas ao rolar a galeria, ao carregar imagens e ao redimensionar
+  document.addEventListener("scroll", (e) => {
+    if (e.target instanceof Element && e.target.classList.contains("gallery")) updateGalleryNavs();
+  }, true);
+  document.addEventListener("load", (e) => {
+    if (e.target instanceof HTMLImageElement && e.target.closest(".gallery")) requestAnimationFrame(updateGalleryNavs);
+  }, true);
+  addEventListener("resize", () => requestAnimationFrame(updateGalleryNavs));
 
   /* ---------- Preview de imagem que segue o cursor ---------- */
   const preview = $("#preview"), previewImg = preview.querySelector("img");
