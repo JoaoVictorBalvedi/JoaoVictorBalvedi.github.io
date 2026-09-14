@@ -154,12 +154,30 @@ p em, li em { font-size: 1.18em; line-height: 1; }
 .highlights li { position: relative; padding-left: 22px; margin: 6px 0; color: var(--ink-2); }
 .highlights li::before { content: "\2014"; position: absolute; left: 0; color: var(--accent); }
 
-.extra { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; margin-top: 56px; }
-.extra ul { list-style: none; padding: 0; margin: 0; }
-.extra li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.extra li strong { font-weight: 500; }
-.extra li span { color: var(--ink-2); grid-column: 1; }
-.extra li .mono { color: var(--ink-3); grid-column: 2; grid-row: 1; }
+/* Formação: subtítulo dentro de Experiência */
+.subsection-title {
+  display: flex; align-items: baseline; gap: 12px; margin: 72px 0 0; padding-top: 14px;
+  border-top: 1px solid var(--ink); font: 400 32px/1 var(--serif);
+}
+.subsection-title .mono { color: var(--accent); }
+
+/* Reconhecimentos */
+.awards { list-style: none; margin: 0; padding: 0; }
+.award { border-bottom: 1px solid var(--line); }
+.award-row { position: relative; display: grid; grid-template-columns: 170px 1fr; gap: 10px 32px; padding: 32px 0; }
+.award-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 12px; }
+.award-year { color: var(--ink-3); }
+.badge {
+  display: inline-block; padding: 6px 11px; border-radius: 99px;
+  background: var(--accent); color: var(--paper); font-size: 11px; font-weight: 500; letter-spacing: .05em;
+}
+.award h3 { font: 400 clamp(30px, 3.8vw, 50px)/1.05 var(--serif); margin: 0; letter-spacing: -.01em; }
+.award-org { color: var(--ink-3); margin: 12px 0 0; }
+.award .desc { color: var(--ink-2); margin: 10px 0 0; max-width: 60ch; font-size: 17px; }
+.award.expandable { cursor: pointer; }
+@media (hover: hover) {
+  .awards .award:hover .project-title { transform: translateX(12px); }
+}
 
 .lang-toggle {
   display: flex; align-items: center; gap: 2px; height: 32px; padding: 0 10px;
@@ -236,28 +254,28 @@ button.project-main {
   font: 16px/1 var(--mono); color: var(--ink-2); transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .2s, color .2s;
 }
 .project-toggle::before { content: "+"; }
-.project.expandable:hover .project-toggle { border-color: var(--accent); color: var(--accent); }
-.project.open .project-toggle { transform: rotate(45deg); border-color: var(--accent); color: var(--accent); }
+.expandable:hover .project-toggle { border-color: var(--accent); color: var(--accent); }
+.open .project-toggle { transform: rotate(45deg); border-color: var(--accent); color: var(--accent); }
 .project-details {
   grid-column: 2 / -1; display: grid; grid-template-rows: 0fr; visibility: hidden;
   position: relative; z-index: 1;
   transition: grid-template-rows .55s cubic-bezier(.2,.7,.2,1), visibility 0s linear .55s;
 }
-.project.open .project-details { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .55s cubic-bezier(.2,.7,.2,1), visibility 0s; }
+.open .project-details { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .55s cubic-bezier(.2,.7,.2,1), visibility 0s; }
 .project-details-inner { overflow: hidden; min-height: 0; }
 .details-text { color: var(--ink-2); max-width: 64ch; margin: 22px 0 0; }
 .gallery {
-  display: flex; gap: 16px; overflow-x: auto; padding: 24px 0 10px;
+  display: flex; align-items: center; gap: 16px; overflow-x: auto; padding: 24px 0 10px;
   scroll-snap-type: x mandatory; scrollbar-width: thin;
 }
 .gallery figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
-.gallery img {
+.gallery img, .gallery video {
   height: clamp(320px, 38vw, 460px); width: auto; max-width: none;
   border-radius: 22px; background: var(--paper-2); border: 1px solid var(--line);
 }
 @media (max-width: 860px) {
   .project .project-details { grid-column: 1 / -1; }
-  .gallery img { height: 380px; }
+  .gallery img, .gallery video { height: 380px; }
 }
 
 /* Pessoal */
@@ -303,7 +321,9 @@ button.project-main {
 @media (max-width: 860px) {
   .nav { display: none; }
   .lang-toggle { margin-left: auto; }
-  .extra { grid-template-columns: 1fr; }
+  .subsection-title { margin-top: 56px; font-size: 28px; }
+  .award-row { grid-template-columns: 1fr; }
+  .award-meta { flex-direction: row; align-items: center; padding-top: 0; }
   .section { grid-template-columns: 1fr; }
   .section-label { position: static; }
   .section-body { border-top: 0; padding-top: 0; }

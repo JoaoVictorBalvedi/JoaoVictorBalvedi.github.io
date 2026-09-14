@@ -47,6 +47,20 @@
   const tagList = (tags = []) => `<ul class="tags">${tags.map((tag) => `<li>${esc(t(tag))}</li>`).join("")}</ul>`;
   const extLink = (url, label) => `<a href="${esc(url)}" target="_blank" rel="noopener">${label}</a>`;
 
+  // conteúdo expandido: parágrafos + galeria de fotos/vídeos
+  const paragraphs = (v) => [].concat(t(v) || []).map((p) => `<p class="details-text">${emph(p)}</p>`).join("");
+  const mediaItem = (m) => m.type === "video"
+    ? `<figure><video src="${esc(m.src)}"${m.poster ? ` poster="${esc(m.poster)}"` : ""} controls playsinline preload="metadata" aria-label="${esc(t(m.alt))}"></video></figure>`
+    // imagens pequenas não são ampliadas (evita ficar borrado)
+    : `<figure><img src="${esc(m.src)}" alt="${esc(t(m.alt))}" loading="lazy" onload="if(this.naturalHeight&&this.naturalHeight<this.clientHeight)this.style.height=this.naturalHeight+'px'"></figure>`;
+  const detailsBlock = (id, text, media) => `
+    <div class="project-details" id="${id}">
+      <div class="project-details-inner">
+        ${text ? paragraphs(text) : ""}
+        ${media && media.length ? `<div class="gallery">${media.map(mediaItem).join("")}</div>` : ""}
+      </div>
+    </div>`;
+
   /* ---------- Renderização ---------- */
   let firstRender = true;
 
@@ -88,16 +102,41 @@
         </div>
       </li>`).join("");
 
-    const block = (title, items) => items && items.length ? `
-      <div class="reveal">
-        <h3 class="mono small-title">${title}</h3>
-        <ul>${items.join("")}</ul>
-      </div>` : "";
-    $("#extra").innerHTML =
-      block(L.education, (D.education || []).map((e) =>
-        `<li><strong>${esc(t(e.title))}</strong><span class="mono">${period(e.start, e.end)}</span><span>${esc(t(e.org))}</span></li>`)) +
-      block(L.awards, (D.awards || []).map((a) =>
-        `<li><strong>${esc(t(a.title))}</strong><span class="mono">${esc(a.year)}</span><span>${esc(t(a.org))}</span></li>`));
+    // Formação (mesmo formato das experiências)
+    $("#education").innerHTML = (D.education || []).map((e) => `
+      <li class="job reveal">
+        <div class="job-date mono">${period(e.start, e.end)}${e.place ? `<span class="job-place">${esc(t(e.place))}</span>` : ""}</div>
+        <div>
+          <h3>${esc(t(e.title))} <span class="org">· ${esc(t(e.org))}</span></h3>
+          ${e.summary ? `<p>${emph(e.summary)}</p>` : ""}
+        </div>
+      </li>`).join("");
+
+    // Reconhecimentos (expandem com texto, fotos e vídeos)
+    $("#recognitionIntro").textContent = t(D.recognitionIntro);
+    $("#awards").innerHTML = (D.awards || []).map((a, i) => {
+      const id = `award-details-${i}`;
+      const expandable = Boolean(a.description || (a.media && a.media.length));
+      const title = `<span class="project-title">${esc(t(a.title))}</span>`;
+      const main = expandable
+        ? `<button type="button" class="project-main expand-btn" aria-expanded="false" aria-controls="${id}">${title}<span class="project-toggle" aria-hidden="true"></span></button>`
+        : title;
+      return `
+      <li class="award reveal${expandable ? " expandable" : ""}">
+        <div class="award-row">
+          <div class="award-meta">
+            <span class="mono award-year">${esc(a.year)}</span>
+            ${a.badge ? `<span class="badge mono">${esc(t(a.badge))}</span>` : ""}
+          </div>
+          <div class="award-body">
+            <h3>${main}</h3>
+            <p class="award-org mono">${esc(t(a.org))}</p>
+            ${a.summary ? `<p class="desc">${emph(a.summary)}</p>` : ""}
+            ${expandable ? detailsBlock(id, a.description, a.media) : ""}
+          </div>
+        </div>
+      </li>`;
+    }).join("");
 
     // Projetos
     const allTags = [L.all, ...new Set(D.projects.flatMap((p) => (p.tags || []).map(t)))];
@@ -112,16 +151,9 @@
       const title = `<span class="project-title">${esc(t(p.title))}</span>`;
       let main = title;
       if (href) main = `<a class="project-main" href="${esc(href)}" target="_blank" rel="noopener">${title}</a>`;
-      else if (expandable) main = `<button type="button" class="project-main" aria-expanded="false" aria-controls="${detailsId}">${title}<span class="project-toggle" aria-hidden="true"></span></button>`;
+      else if (expandable) main = `<button type="button" class="project-main expand-btn" aria-expanded="false" aria-controls="${detailsId}">${title}<span class="project-toggle" aria-hidden="true"></span></button>`;
 
-      const details = expandable ? `
-          <div class="project-details" id="${detailsId}">
-            <div class="project-details-inner">
-              ${p.summary ? `<p class="details-text">${emph(p.description)}</p>` : ""}
-              ${p.gallery && p.gallery.length ? `<div class="gallery">${p.gallery.map((g) =>
-                `<figure><img src="${esc(g.src)}" alt="${esc(t(g.alt))}" loading="lazy"></figure>`).join("")}</div>` : ""}
-            </div>
-          </div>` : "";
+      const details = expandable ? detailsBlock(detailsId, p.summary ? p.description : "", p.gallery) : "";
 
       return `
       <li class="project reveal${p.featured ? " featured" : ""}${expandable ? " expandable" : ""}" data-tags="${esc((p.tags || []).map(t).join("|"))}" data-image="${esc(p.image || "")}" data-image-style="${esc(p.imageStyle || "")}">
@@ -175,13 +207,15 @@
     });
   });
 
-  /* ---------- Projetos que expandem ---------- */
-  $("#projectList").addEventListener("click", (e) => {
-    const btn = e.target.closest("button.project-main");
+  /* ---------- Itens que expandem (projetos sem site, reconhecimentos) ---------- */
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("button.expand-btn");
     if (!btn) return;
+    const item = btn.closest(".expandable");
     const open = btn.getAttribute("aria-expanded") !== "true";
     btn.setAttribute("aria-expanded", String(open));
-    btn.closest(".project").classList.toggle("open", open);
+    item.classList.toggle("open", open);
+    if (!open) item.querySelectorAll("video").forEach((v) => v.pause());
   });
 
   /* ---------- Preview de imagem que segue o cursor ---------- */

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <!-- ao publicar mudanças em CSS/JS, aumente o ?v= para o navegador não usar a versão em cache -->
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
   <script>
     // aplica o tema antes de renderizar para evitar "flash"
     try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -24,9 +24,10 @@
     <nav class="nav">
       <a href="#about"><span>01</span><b data-i18n="about"></b></a>
       <a href="#experience"><span>02</span><b data-i18n="experience"></b></a>
-      <a href="#projects"><span>03</span><b data-i18n="projects"></b></a>
-      <a href="#personal"><span>04</span><b data-i18n="personal"></b></a>
-      <a href="#contact"><span>05</span><b data-i18n="contact"></b></a>
+      <a href="#recognition"><span>03</span><b data-i18n="awards"></b></a>
+      <a href="#projects"><span>04</span><b data-i18n="projects"></b></a>
+      <a href="#personal"><span>05</span><b data-i18n="personal"></b></a>
+      <a href="#contact"><span>06</span><b data-i18n="contact"></b></a>
     </nav>
     <button class="lang-toggle mono" id="langToggle" data-i18n-aria="langAria">
       <span data-lang="en">EN</span>/<span data-lang="pt">PT</span>
@@ -74,13 +75,23 @@
       <div class="section-label"><span class="mono">02</span><h2 data-i18n="experience"></h2></div>
       <div class="section-body">
         <ol class="timeline" id="jobs"></ol>
-        <div class="extra" id="extra"></div>
+        <h3 class="subsection-title"><span data-i18n="education"></span></h3>
+        <ol class="timeline" id="education"></ol>
       </div>
     </section>
 
-    <!-- 03 PROJECTS -->
+    <!-- 03 RECOGNITION -->
+    <section class="section" id="recognition">
+      <div class="section-label"><span class="mono">03</span><h2 data-i18n="awards"></h2></div>
+      <div class="section-body">
+        <p class="section-intro" id="recognitionIntro"></p>
+        <ol class="awards" id="awards"></ol>
+      </div>
+    </section>
+
+    <!-- 04 PROJECTS -->
     <section class="section" id="projects">
-      <div class="section-label"><span class="mono">03</span><h2 data-i18n="projects"></h2></div>
+      <div class="section-label"><span class="mono">04</span><h2 data-i18n="projects"></h2></div>
       <div class="section-body">
         <div class="filters mono" id="filters" role="tablist" data-i18n-aria="filterAria"></div>
         <ul class="projects" id="projectList"></ul>
@@ -88,18 +99,18 @@
       <div class="preview" id="preview" aria-hidden="true"><img alt=""></div>
     </section>
 
-    <!-- 04 PERSONAL -->
+    <!-- 05 PERSONAL -->
     <section class="section" id="personal">
-      <div class="section-label"><span class="mono">04</span><h2 data-i18n="personal"></h2></div>
+      <div class="section-label"><span class="mono">05</span><h2 data-i18n="personal"></h2></div>
       <div class="section-body">
         <p class="section-intro" id="personalIntro"></p>
         <div class="personal-grid" id="personalGrid"></div>
       </div>
     </section>
 
-    <!-- 05 CONTACT -->
+    <!-- 06 CONTACT -->
     <section class="section contact" id="contact">
-      <div class="section-label"><span class="mono">05</span><h2 data-i18n="contact"></h2></div>
+      <div class="section-label"><span class="mono">06</span><h2 data-i18n="contact"></h2></div>
       <div class="section-body">
         <p class="contact-lede" id="contactLede"></p>
         <a class="contact-mail" id="contactMail"></a>
@@ -114,7 +125,7 @@
     <a href="#top" data-i18n="top"></a>
   </footer>
 
-  <script src="data.js?v=7"></script>
-  <script src="main.js?v=7"></script>
+  <script src="data.js?v=8"></script>
+  <script src="main.js?v=8"></script>
 </body>
 </html>

@@ -121,14 +121,66 @@ window.PORTFOLIO = {
     {
       title: { en: "B.Sc. in Computer Science", pt: "Bacharelado em Ciência da Computação" },
       org: { en: "Pontifical Catholic University of Paraná (PUCPR)", pt: "Pontifícia Universidade Católica do Paraná (PUCPR)" },
+      place: "Curitiba",
       start: "2023",
       end: "",
+      summary: {
+        en: "Where I joined PIBEP and co-founded my first startup, EstagIArio — now Super ADV.",
+        pt: "Onde participei do PIBEP e co-fundei minha primeira startup, a EstagIArio — hoje Super ADV.",
+      },
     },
   ],
 
+  /* ---------- RECONHECIMENTOS ----------
+     Clicar expande: description (texto ou lista de parágrafos) + media.
+     media: [{ type: "image" | "video", src: "assets/...", alt: { en, pt }, poster?: "capa do vídeo" }] */
+  recognitionIntro: {
+    en: "Competitions and programs where our ideas came out on top.",
+    pt: "Competições e programas em que nossas ideias saíram na frente.",
+  },
   awards: [
-    { title: { en: "Winner — Techstars Startup Weekend AI", pt: "Vencedor — Techstars Startup Weekend AI" }, org: "Curitiba", year: "2025" },
-    { title: { en: "Winner — PIBEP", pt: "Vencedor — PIBEP" }, org: "PUCPR", year: "2024" },
+    {
+      title: "Techstars Startup Weekend AI",
+      badge: { en: "1st place", pt: "1º lugar" },
+      org: "Techstars · Curitiba",
+      year: "2025",
+      summary: {
+        en: "54 hours, a team formed at the event itself and an AI-powered MVP for agribusiness that took first place.",
+        pt: "54 horas, uma equipe formada no próprio evento e um MVP com IA para o agronegócio que ficou em 1º lugar.",
+      },
+      description: {
+        en: "I won 1st place at Techstars Startup Weekend AI 2025, an intensive 54-hour competition where I teamed up with people I met at the event itself. We built an MVP for agribusiness: a solution that centralizes relevant information, generates personalized alerts and connects data between farmers in the same region to help them anticipate risks, make better decisions about the harvest and optimize resources — with mentorship throughout from experienced professionals in entrepreneurship, innovation and investment.",
+        pt: "Conquistei o 1º lugar no Techstars Startup Weekend AI 2025, uma competição intensiva de 54 horas na qual formei equipe com participantes que conheci durante o próprio evento e desenvolvemos um MVP voltado ao agronegócio, criando uma solução capaz de centralizar informações relevantes, gerar alertas personalizados e conectar dados entre produtores de uma mesma região para ajudá-los a antecipar riscos, tomar melhores decisões sobre a safra e otimizar recursos, contando durante o processo com mentorias de profissionais experientes em empreendedorismo, inovação e investimento.",
+      },
+      media: [
+        { type: "image", src: "assets/img/recognition/techstars-trofeu.jpg", alt: { en: "Holding the 1st place trophy at Techstars Startup Weekend AI Curitiba", pt: "Com o troféu de 1º lugar no Techstars Startup Weekend AI Curitiba" } },
+        { type: "image", src: "assets/img/recognition/techstars-equipe.jpg", alt: { en: "The team planning the business model on a sticky-note board", pt: "A equipe planejando o modelo de negócio num quadro de post-its" } },
+      ],
+    },
+    {
+      title: "PIBEP — PUCPR",
+      badge: { en: "Winner", pt: "Vencedor" },
+      org: "PUCPR · Sebrae Paraná",
+      year: "2024",
+      summary: {
+        en: "Entrepreneurship and research program where we founded EstagIArio — later Super ADV — and took first place.",
+        pt: "Programa de empreendedorismo e pesquisa em que fundamos a EstagIArio — depois Super ADV — e conquistamos o 1º lugar.",
+      },
+      description: {
+        en: [
+          "I was a winner of PIBEP — PUCPR's Institutional Entrepreneurship and Research Scholarship Program, run in partnership with Sebrae Paraná — a journey focused on developing innovative ideas and training new entrepreneurs. Throughout the program, I went through every stage of structuring and validating a business, with mentorship from PUCPR professors and entrepreneurship experts, plus hands-on activities, pitches and networking opportunities.",
+          "It was within PIBEP that we founded EstagIArio, a startup later renamed Super ADV, which took first place in the program. The experience was key to turning the initial idea into a business, developing our entrepreneurial vision and opening doors to new pitches, competitions, connections with the innovation ecosystem and opportunities with Sebrae and other startup development programs.",
+        ],
+        pt: [
+          "Fui vencedor do PIBEP, Programa Institucional de Bolsas de Empreendedorismo e Pesquisa da PUCPR em parceria com o Sebrae Paraná, uma jornada voltada ao desenvolvimento de ideias inovadoras e à formação de novos empreendedores. Ao longo do programa, passei por todas as etapas de estruturação e validação de um negócio, contando com mentorias de professores e especialistas em empreendedorismo da PUCPR, além de atividades práticas, apresentações e oportunidades de networking.",
+          "Foi dentro do PIBEP que fundamos a EstagIArio, startup posteriormente renomeada para Super ADV, com a qual conquistamos o primeiro lugar do programa. A experiência foi fundamental para transformar a ideia inicial em um negócio, desenvolver nossa visão empreendedora e abrir portas para novas apresentações, competições, conexões com o ecossistema de inovação e oportunidades junto ao Sebrae e a outros programas de desenvolvimento de startups.",
+        ],
+      },
+      media: [
+        { type: "image", src: "assets/img/recognition/pibep-vencedores.jpg", alt: { en: "The winning team with the PIBEP Garage 2024 plaque at PUCPR", pt: "A equipe vencedora com a placa do PIBEP Garage 2024 na PUCPR" } },
+        { type: "image", src: "assets/img/recognition/pibep-turma.jpg", alt: { en: "PIBEP participants and mentors", pt: "Participantes e mentores do PIBEP" } },
+      ],
+    },
   ],
 
   /* ---------- PROJETOS ----------
