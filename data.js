@@ -262,27 +262,29 @@ window.PORTFOLIO = {
   },
   creations: [
     {
-      title: "Claude Review Action",
+      title: "Claude PR Reviewer",
       kind: { en: "Dev tool", pt: "Ferramenta dev" },
       cover: "assets/img/creations/claude-review.svg",
       coverAlt: { en: "Illustration of a pull request diff with an AI review comment", pt: "Ilustração de um diff de pull request com um comentário de revisão por IA" },
       summary: {
-        en: "A Claude powered reviewer that reads every pull request before a human does.",
-        pt: "Um revisor com Claude que lê cada pull request antes de qualquer humano.",
+        en: "Claude reviews every pull request and leaves inline comments that point to real bugs, with the fix.",
+        pt: "O Claude revisa cada pull request e deixa comentários na linha certa apontando bugs reais, já com a correção.",
       },
       description: {
         en: [
-          "Code review is where quality is won or lost, and also where teams wait the longest. Claude Review Action is a GitHub Action that puts Claude on every pull request: as soon as a change is opened, it reads the diff and gives the team a first review, so people can spend their attention on the decisions that really need them.",
-          "It came out of my work on AI assisted development at Tog Lab, where the goal is simple: ship faster without letting code quality slip.",
+          "Code review is where quality is won or lost, and also where teams wait the longest. Claude PR Reviewer is a GitHub Action that runs every time a pull request is opened or updated: it gathers the PR description, the diff, the full content of the changed files and, optionally, the linked Jira issue, then asks Claude for a review that lands as inline comments right on the lines that matter.",
+          "The prompt is tuned for signal over noise. It looks for runtime bugs, security and auth problems, broken API contracts, error handling and gaps between what the task asked for and what the code does, while ignoring formatting, naming and nitpicks. Each comment brings a short title, why it matters and a fix, often as a GitHub suggestion you apply in one click, and nothing gets posted without a self check against the final code and a minimum confidence.",
+          "When someone replies to a comment, it answers in the thread, either agreeing with the point or explaining the concern with a concrete example. Turning it on in a repository takes one command and an Anthropic API key.",
         ],
         pt: [
-          "Code review é onde a qualidade se ganha ou se perde, e também onde os times mais esperam. A Claude Review Action é uma GitHub Action que coloca o Claude em cada pull request: assim que uma mudança é aberta, ele lê o diff e faz uma primeira revisão, para que as pessoas possam dedicar atenção às decisões que realmente precisam delas.",
-          "Ela nasceu do meu trabalho com desenvolvimento assistido por IA na Tog Lab, onde o objetivo é simples: entregar mais rápido sem deixar a qualidade do código cair.",
+          "Code review é onde a qualidade se ganha ou se perde, e também onde os times mais esperam. O Claude PR Reviewer é uma GitHub Action que roda sempre que um pull request é aberto ou atualizado: ele reúne a descrição do PR, o diff, o conteúdo completo dos arquivos alterados e, se configurado, a issue do Jira, e pede ao Claude uma revisão que vira comentários direto nas linhas que importam.",
+          "O prompt foi afinado para ter sinal em vez de ruído. Ele procura bugs de execução, problemas de segurança e autenticação, contratos de API quebrados, tratamento de erros e diferenças entre o que a tarefa pedia e o que o código faz, ignorando formatação, nomes e detalhes de estilo. Cada comentário traz um título curto, por que aquilo importa e a correção, muitas vezes como uma sugestão do GitHub aplicada com um clique, e nada é publicado sem uma checagem contra o código final e uma confiança mínima.",
+          "Quando alguém responde a um comentário, ele responde na própria conversa, concordando com o ponto ou explicando a preocupação com um exemplo concreto. Para ativar num repositório basta um comando e uma chave da API da Anthropic.",
         ],
       },
-      tags: ["GitHub Actions", "Claude", { en: "AI", pt: "IA" }],
+      tags: ["GitHub Actions", "Claude API", "Python", "Shell"],
       links: [{ label: "GitHub", url: "https://github.com/toglab/claude-review-action" }],
-      note: { en: "Private repository · Tog Lab", pt: "Repositório privado · Tog Lab" },
+      note: { en: "Built at Tog Lab", pt: "Feito na Tog Lab" },
     },
     {
       title: { en: "Commodity price forecasting", pt: "Previsão de preços de commodities" },
